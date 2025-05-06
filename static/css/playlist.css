@@ -1,0 +1,89 @@
+/* הטמעת גופן מותאם אישית */
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('../fonts/STANB___.ttf') format('truetype');
+}
+
+/* הגדרות עבור כפתורי הפיקסלים */
+.pixel-controls {
+    display: flex;
+    justify-content: flex-end; /* ממקם את הכפתורים בצד ימין */
+    gap: 10px;
+    position: absolute; /* מאפשר מיקום יחסית למסך */
+    top: 10px; /* מיקום מלמעלה */
+    right: 10px; /* מיקום מצד ימין */
+}
+
+/* איפוס של מרווחים עבור body ו-html */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* סגנונות כלליים עבור גוף הדף */
+body {
+    font-family: 'MyCustomFont', sans-serif;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    height: 100vh; /* גובה מלא של העמוד */
+    overflow: hidden; /* מניעת גלילה על המסך */
+}
+
+/* קונטיינר ממורכז עם Flexbox */
+.centered-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* מתחיל מהאמצע ומתרחב כלפי מטה */
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+    padding-top: 50vh; /* מתחיל מהחצי התחתון של העמוד */
+    box-sizing: border-box;
+    overflow-y: auto; /* מאפשר גלילה כשהתוכן מתרחב */
+    text-align: right; /* יישור הטקסט לימין */
+}
+
+/* סגנון עבור כותרות h1 */
+h1 {
+    font-size: 45px;
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+/* GIF רקע */
+#background-gif {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('static/images/static.gif') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+}
+
+/* סגנון עבור כפתור */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-family: 'MyCustomFont', sans-serif;
+    text-decoration: none;
+    color: white;
+    background-color: transparent;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: darkgray;
+}

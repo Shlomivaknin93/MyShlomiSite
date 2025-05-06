@@ -1,0 +1,115 @@
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('../fonts/STANB___.ttf') format('truetype'); format('truetype');
+
+}
+
+body {
+    font-family: 'MyCustomFont', sans-serif;
+    color: white;
+}
+
+
+body {
+    background-color: black; /* רקע צבעוני */
+    font-family: 'MyCustomFont', sans-serif;
+}
+
+/* Reset default margin and padding for body and html */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+/* מיקום הטקסט */
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.top-left-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.centered-text {
+    text-align: center;
+}
+
+/* צבע הטקסט */
+
+.black-link {
+            color: white;
+            text-decoration: none; /* מסיר קו תחתון אם לא רוצים */
+        }
+
+
+/* כפתור בסגנון פיקסל */
+
+.pixel-button {
+background-color: black; /* צבע רקע */
+border: 4px solid white; /* גבול שחור עבה */
+padding: 10px 20px; /* ריווח פנימי */
+font-family: url('../fonts/STANB___.ttf') format('truetype');format('truetype');/* גופן מונוספייס כמו במשחקי וידאו ישנים */
+font-size: 30px;
+color: white; /* צבע טקסט שחור */
+text-transform: uppercase; /* טקסט באותיות גדולות */
+cursor: var(); /* מצביע עכבר */
+text-decoration: none; /* מסיר קו תחתון */
+display: inline-block;
+margin: 15px; /* רווח מסביב לכפתור */
+box-shadow: 5px 5px 0 darkgray, 8px 8px 0 grey; /* הצללה יוצרת אפקט תלת-ממדי בסגנון פיקסלים */
+}
+.pixel-button:active {
+box-shadow: 2px 2px 0 #000, 4px 4px 0 #888; /* הצללה משתנה בזמן לחיצה */
+transform: translate(4px, 4px); /* תזוזה בזמן לחיצה */
+}
+
+
+/* כפתור רגיל*/
+
+/* Button conect styling */
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-family: url('../fonts/STANB___.ttf') format('truetype');
+    text-decoration: none;
+    color: white;
+    background-color: transparent;;
+    border-radius: 0px;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+    /*מיקום הכפתור צור קשר */
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    padding: 10px 20px;
+    font-size: 38px;
+    cursor: pointer;
+
+}
+
+.button:hover {
+    background-color: darkgray;
+}
+
+/* GIF רקע */
+#background-gif {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('static/images/static.gif') no-repeat center center;
+    background-size: cover;
+    z-index: -1;
+}
+/* Button conect styling */

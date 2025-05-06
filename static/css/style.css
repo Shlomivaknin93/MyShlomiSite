@@ -1,0 +1,258 @@
+/* ==== ROOT VARIABLES ==== */
+:root {
+    --font-main: 'MyCustomFont', sans-serif;
+    --color-bg: black;
+    --color-text: white;
+    --color-hover: darkgray;
+    --color-accent: lightcoral;
+    --btn-size: 50px;
+    --tv-btn-size: 50px;
+}
+
+/* ==== FONT IMPORT ==== */
+@font-face {
+    font-family: 'MyCustomFont';
+    src: url('../fonts/STANB___.ttf') format('truetype');
+}
+
+/* ==== RESET ==== */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-bg);
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ==== LAYOUT ==== */
+.centered-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 50vh;
+}
+
+.header {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    z-index: 1000;
+    text-align: center;
+}
+
+.scrollable-content {
+    margin-top: 80px;
+    max-height: calc(200vh - 300px);
+    overflow-y: auto;
+    padding: 20px;
+}
+
+/* ==== CONTROL BAR ==== */
+.top-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    z-index: 100;
+}
+
+/* ==== BUTTONS ==== */
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-family: var(--font-main);
+    color: var(--color-text);
+    background-color: transparent;
+    font-size: 2vw;
+    cursor: pointer;
+    position: absolute;
+    top: 5vh;
+    left: 5vw;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: var(--color-hover);
+}
+
+/* ==== MUSIC + TV BUTTONS ==== */
+.music-button,
+.tv-button {
+    background: none;
+    border: none;
+    padding: 0;
+    width: var(--btn-size);
+    height: var(--btn-size);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    transition: all 0.1s ease;
+}
+
+.music-button:active,
+.tv-button:active {
+    transform: scale(0.85);
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.music-button:hover,
+.tv-button:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+/* ==== ICON IMAGES ==== */
+.music-button img,
+.tv-button img {
+    width: 100%;
+    height: 100%;
+    max-width: 32px;
+    max-height: 32px;
+    object-fit: contain;
+    aspect-ratio: 1 / 1;
+}
+
+/* ==== TEXT ==== */
+h1 {
+    font-size: 45px;
+    color: var(--color-text);
+    text-align: right;
+}
+
+.centered-text h1 {
+    display: inline-block;
+    text-align: right;
+}
+
+.cv-link,
+.black-link,
+.playlist-link {
+    color: var(--color-text);
+    text-decoration: none;
+    font-family: var(--font-main);
+}
+
+.cv-link:hover,
+.black-link:hover,
+.playlist-link:hover {
+    color: var(--color-hover);
+}
+
+.playlist-link {
+    color: var(--color-accent);
+    font-size: 45px;
+    padding: 5px 10px;
+}
+
+/* ==== BACKGROUND MEDIA ==== */
+#background-video,
+#background-gif {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1;
+}
+
+#background-gif {
+    background: url('static/images/static.gif') no-repeat center center;
+    background-size: cover;
+    display: none;
+}
+
+/* ==== HOVER IMAGES ==== */
+.image1, .image2 {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    width: 190px;
+    height: auto;
+}
+
+.image1 {
+    top: 40%;
+    left: 55%;
+}
+
+.image2 {
+    top: 70%;
+    left: 45%;
+}
+
+.hover-container:hover .image1,
+.hover-container:hover .image2 {
+    display: block;
+}
+
+/* ==== EFFECTS ==== */
+.ripple-effect:hover {
+    animation: colorChange 0.1s infinite;
+}
+
+@keyframes colorChange {
+    0%   { background-color: #FF0000; }
+    25%  { background-color: #00FF00; }
+    50%  { background-color: #0000FF; }
+    75%  { background-color: #FFFF00; }
+    100% { background-color: #FF00FF; }
+}
+
+/* ==== RESPONSIVE ==== */
+@media (max-width: 768px) {
+    .button {
+        font-size: 5vw;
+        padding: 8px 16px;
+    }
+
+    .header h1 {
+        font-size: 6vw;
+    }
+
+    .tv-button {
+        width: 6vw;
+        height: 6vw;
+    }
+
+    .playlist-link {
+        font-size: 8vw;
+    }
+
+    .image1, .image2 {
+        width: 120px;
+    }
+
+    .top-controls {
+        right: 5vw;
+        top: 10px;
+        gap: 8px;
+    }
+
+    .music-button,
+    .tv-button {
+        width: 40px;
+        height: 40px;
+    }
+
+    .music-button img,
+    .tv-button img {
+        max-width: 30px;
+        max-height: 30px;
+    }
+}

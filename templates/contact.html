@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/conect.css') }}">
+
+</head>
+<body>
+
+    <!-- GIF כרקע -->
+    <img id="background-gif" src="static/images/static.gif" alt="GIF רקע" />
+
+    <div class="centered-text">
+        <h1 class="large-text">צור קשר</h1>
+        <p>
+        <a href="tel:+972501234567" class="pixel-button">050-2245810 - מספר נייד</a>
+         </p>
+        <p><a href="mailto:shlomies150@gmail.com" class="pixel-button">shlomies150@gmail.com - דואר אלקטרוני</a></p>
+        <a href="https://www.google.com/maps/place/%D7%9B%D7%A4%D7%A8+%D7%94%D7%A0%D7%95%D7%A2%D7%A8+%D7%A7%D7%93%D7%9E%D7%94%E2%80%AD/@31.7013232,34.7818675,17z/data=!3m1!4b1!4m6!3m5!1s0x150295e2dec15419:0x28894090f76886f5!8m2!3d31.7013187!4d34.7769966!16s%2Fg%2F11c1wk4t4t?entry=ttu" target="_blank" class="pixel-button">כתובת : קדמה רחוב האומנים</a>
+    </div>
+    <div class="top-left-button">
+    <a href="{{ url_for('home') }}" class="button" >חזרה</a>
+    </div>
+</body>
+</html>

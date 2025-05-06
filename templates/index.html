@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business card</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <!-- רקע וידאו -->
+    <video autoplay loop muted playsinline id="background-video">
+        <source src="{{ url_for('static', filename='videos/moonwalk.mp4') }}" type="video/mp4">
+        הדפדפן שלך לא תומך בסרטונים.
+    </video>
+
+    <!-- רקע GIF -->
+    <img id="background-gif" src="{{ url_for('static', filename='images/static.gif') }}" alt="GIF רקע" />
+
+    <!-- שליטה על רקע ומוזיקה -->
+    <div class="top-controls">
+        <button id="play-btn" class="music-button">
+            <img src="{{ url_for('static', filename='images/PLAY.png') }}" alt="Play">
+        </button>
+        <button id="pause-btn" class="music-button">
+            <img src="{{ url_for('static', filename='images/PUOSE.png') }}" alt="Pause">
+        </button>
+        <img id="toggle-background" class="tv-button" src="{{ url_for('static', filename='images/next.png') }}" alt="החלף רקע">
+    </div>
+
+    <!-- נגן מוזיקה -->
+    <audio id="audio-player" autoplay loop>
+        <source src="{{ url_for('static', filename='music/Lucy_in_Disguise-1987.mp3') }}" type="audio/mpeg">
+        הדפדפן שלך אינו תומך בתגית השמע.
+    </audio>
+
+    <!-- תוכן מרכזי -->
+    <div class="centered-container centered-text">
+        <h1>
+            היי! אני
+            <span class="hover-container img" style="color: lightcoral;">
+                <strong>שלומי וקנין</strong>
+                <img class="image1" src="{{ url_for('static', filename='images/pixelated_image.jpeg') }}" alt="שלומי וקנין">
+            </span><br>
+            - גר בקדמה במחוז דרום, בהכשרתי אני<br>
+            <strong class="ripple-effect" style="color: lightcoral">BIM MANAGER AND ARCHITECTURAL ENGINEER</strong><br>
+            חובב פייתון, טכנולוגיה על כל גווניה ופיצה מושבע<br><br>
+            - נכון להיום אני ה<br>
+            <strong class="ripple-effect" style="color: lightcoral">HEAD OF THE BIM DEPARTMENT</strong><br>
+            של משרד האדריכלים
+            <span class="hover-container img" style="color: lightcoral">
+                <strong>בר אוריין</strong>
+                <img class="image2" src="{{ url_for('static', filename='images/27709490_973625679463046_4043216057836764719_o.png') }}" alt="בר אוריין">
+            </span><br><br>
+            <br>אני אדם מאוד סקרן, חובב טבע, נגינה<br>
+            מוזיקה ורקע שחור ברוויט<br>
+            הנה כמה
+            <a href="{{ url_for('playlist') }}" class="playlist-link">פלייליסטים</a><br>
+            שעוזרים לי להיות במצב
+            <a href="https://he.wikipedia.org/wiki/זרימה_(פסיכולוגיה)" target="_blank" style="color: lightcoral; text-decoration: none;">
+                <strong>זרימה</strong>
+            </a><br><br>
+            <a href="static/images/cv_shlomivaknin.pdf" download class="cv-link" style="background-image: url('static/images/cvgif.gif');">
+                להורדת קו"ח
+            </a>
+        </h1>
+    </div>
+
+    <!-- כפתור צור קשר -->
+    <a href="{{ url_for('contact') }}" class="button">צור קשר</a>
+
+    <!-- סקריפט לשליטה בנגן -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const audioPlayer = document.getElementById('audio-player');
+            const playBtn = document.getElementById('play-btn');
+            const pauseBtn = document.getElementById('pause-btn');
+
+            audioPlayer.play().catch(function (error) {
+                console.log('Autoplay blocked:', error);
+            });
+
+            playBtn.addEventListener('click', () => audioPlayer.play());
+            pauseBtn.addEventListener('click', () => audioPlayer.pause());
+        });
+    </script>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
