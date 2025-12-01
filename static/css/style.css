@@ -139,6 +139,14 @@ h1 {
     text-align: right;
 }
 
+.text-accent {
+    color: var(--color-accent);
+}
+
+.link-clean {
+    text-decoration: none;
+}
+
 .cv-link,
 .black-link,
 .playlist-link {
@@ -151,6 +159,10 @@ h1 {
 .black-link:hover,
 .playlist-link:hover {
     color: var(--color-hover);
+}
+
+.cv-download-bg {
+    background-image: url('../images/cvgif.gif');
 }
 
 .playlist-link {
@@ -172,7 +184,7 @@ h1 {
 }
 
 #background-gif {
-    background: url('static/images/static.gif') no-repeat center center;
+    background: url('../images/static.gif') no-repeat center center;
     background-size: cover;
     display: none;
 }
@@ -203,15 +215,13 @@ h1 {
 
 /* ==== EFFECTS ==== */
 .ripple-effect:hover {
-    animation: colorChange 0.1s infinite;
+    animation: colorPulse 2s infinite ease-in-out;
 }
 
-@keyframes colorChange {
-    0%   { background-color: #FF0000; }
-    25%  { background-color: #00FF00; }
-    50%  { background-color: #0000FF; }
-    75%  { background-color: #FFFF00; }
-    100% { background-color: #FF00FF; }
+@keyframes colorPulse {
+    0%   { color: var(--color-accent); text-shadow: 0 0 5px var(--color-accent); }
+    50%  { color: #fff; text-shadow: 0 0 15px var(--color-accent); }
+    100% { color: var(--color-accent); text-shadow: 0 0 5px var(--color-accent); }
 }
 
 /* ==== RESPONSIVE ==== */
