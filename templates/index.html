@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
+    <!-- אפקט מעבר ערוץ -->
+    <div id="channel-switch-effect"></div>
 
     <!-- רקע וידאו -->
     <video autoplay loop muted playsinline id="background-video">
@@ -38,17 +40,17 @@
     <div class="centered-container centered-text">
         <h1>
             היי! אני
-            <span class="hover-container img" style="color: lightcoral;">
+            <span class="hover-container img text-accent">
                 <strong>שלומי וקנין</strong>
                 <img class="image1" src="{{ url_for('static', filename='images/pixelated_image.jpeg') }}" alt="שלומי וקנין">
             </span><br>
             - גר בקדמה במחוז דרום, בהכשרתי אני<br>
-            <strong class="ripple-effect" style="color: lightcoral">BIM MANAGER AND ARCHITECTURAL ENGINEER</strong><br>
+            <strong class="ripple-effect text-accent">BIM MANAGER AND ARCHITECTURAL ENGINEER</strong><br>
             חובב פייתון, טכנולוגיה על כל גווניה ופיצה מושבע<br><br>
             - נכון להיום אני ה<br>
-            <strong class="ripple-effect" style="color: lightcoral">HEAD OF THE BIM DEPARTMENT</strong><br>
+            <strong class="ripple-effect text-accent">HEAD OF THE BIM DEPARTMENT</strong><br>
             של משרד האדריכלים
-            <span class="hover-container img" style="color: lightcoral">
+            <span class="hover-container img text-accent">
                 <strong>בר אוריין</strong>
                 <img class="image2" src="{{ url_for('static', filename='images/27709490_973625679463046_4043216057836764719_o.png') }}" alt="בר אוריין">
             </span><br><br>
@@ -57,10 +59,10 @@
             הנה כמה
             <a href="{{ url_for('playlist') }}" class="playlist-link">פלייליסטים</a><br>
             שעוזרים לי להיות במצב
-            <a href="https://he.wikipedia.org/wiki/זרימה_(פסיכולוגיה)" target="_blank" style="color: lightcoral; text-decoration: none;">
+            <a href="https://he.wikipedia.org/wiki/זרימה_(פסיכולוגיה)" target="_blank" class="text-accent link-clean">
                 <strong>זרימה</strong>
             </a><br><br>
-            <a href="static/images/cv_shlomivaknin.pdf" download class="cv-link" style="background-image: url('static/images/cvgif.gif');">
+            <a href="static/images/cv_shlomivaknin.pdf" download class="cv-link cv-download-bg">
                 להורדת קו"ח
             </a>
         </h1>
@@ -68,22 +70,6 @@
 
     <!-- כפתור צור קשר -->
     <a href="{{ url_for('contact') }}" class="button">צור קשר</a>
-
-    <!-- סקריפט לשליטה בנגן -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const audioPlayer = document.getElementById('audio-player');
-            const playBtn = document.getElementById('play-btn');
-            const pauseBtn = document.getElementById('pause-btn');
-
-            audioPlayer.play().catch(function (error) {
-                console.log('Autoplay blocked:', error);
-            });
-
-            playBtn.addEventListener('click', () => audioPlayer.play());
-            pauseBtn.addEventListener('click', () => audioPlayer.pause());
-        });
-    </script>
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
 </body>
