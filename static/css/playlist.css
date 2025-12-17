@@ -1,89 +1,152 @@
-/* הטמעת גופן מותאם אישית */
+/* ==== FONT IMPORT ==== */
 @font-face {
     font-family: 'MyCustomFont';
     src: url('../fonts/STANB___.ttf') format('truetype');
 }
 
-/* הגדרות עבור כפתורי הפיקסלים */
-.pixel-controls {
-    display: flex;
-    justify-content: flex-end; /* ממקם את הכפתורים בצד ימין */
-    gap: 10px;
-    position: absolute; /* מאפשר מיקום יחסית למסך */
-    top: 10px; /* מיקום מלמעלה */
-    right: 10px; /* מיקום מצד ימין */
-}
-
-/* איפוס של מרווחים עבור body ו-html */
+/* ==== RESET ==== */
 html, body {
     margin: 0;
     padding: 0;
     height: 100%;
 }
 
-/* סגנונות כלליים עבור גוף הדף */
+/* ==== BODY ==== */
 body {
     font-family: 'MyCustomFont', sans-serif;
     background-color: black;
     display: flex;
     justify-content: center;
     padding: 0;
-    height: 100vh; /* גובה מלא של העמוד */
-    overflow: hidden; /* מניעת גלילה על המסך */
+    height: 100vh;
+    overflow: hidden;
 }
 
-/* קונטיינר ממורכז עם Flexbox */
+/* ==== LAYOUT ==== */
 .centered-container {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* מתחיל מהאמצע ומתרחב כלפי מטה */
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
     width: 100%;
     height: 100vh;
-    padding-top: 50vh; /* מתחיל מהחצי התחתון של העמוד */
+    padding-top: 15vh;
     box-sizing: border-box;
-    overflow-y: auto; /* מאפשר גלילה כשהתוכן מתרחב */
-    text-align: right; /* יישור הטקסט לימין */
+    overflow-y: auto;
+    text-align: right;
 }
 
-/* סגנון עבור כותרות h1 */
+/* ==== TEXT ==== */
 h1 {
-    font-size: 45px;
+    font-size: clamp(1rem, 3vw, 2rem);
     color: white;
     margin: 0;
-    padding: 0;
+    padding: 0 20px;
+    line-height: 1.8;
 }
 
-/* GIF רקע */
+/* ==== SPOTIFY IFRAME ==== */
+h1 iframe {
+    width: clamp(280px, 80vw, 500px);
+    height: 80px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+/* ==== BACKGROUND GIF ==== */
 #background-gif {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('static/images/static.gif') no-repeat center center;
+    background: url('../images/static.gif') no-repeat center center;
     background-size: cover;
     z-index: -1;
 }
 
-/* סגנון עבור כפתור */
+/* ==== BACK BUTTON ==== */
 .button {
     display: inline-block;
-    padding: 10px 20px;
+    padding: clamp(8px, 2vw, 12px) clamp(15px, 3vw, 25px);
     font-family: 'MyCustomFont', sans-serif;
     text-decoration: none;
     color: white;
     background-color: transparent;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
     position: absolute;
-    top: 5px;
+    top: 10px;
     left: 10px;
-    font-size: 40px;
+    font-size: clamp(1rem, 4vw, 2rem);
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .button:hover {
     background-color: darkgray;
+}
+
+.top-left-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+/* ==== RESPONSIVE ==== */
+
+/* טאבלט */
+@media (max-width: 1024px) {
+    .centered-container {
+        padding-top: 12vh;
+    }
+
+    h1 iframe {
+        width: clamp(280px, 75vw, 450px);
+    }
+}
+
+/* טלפון גדול */
+@media (max-width: 768px) {
+    .centered-container {
+        padding-top: 10vh;
+    }
+
+    h1 {
+        padding: 0 15px;
+    }
+
+    h1 iframe {
+        width: 90vw;
+        max-width: 350px;
+        height: 80px;
+    }
+
+    .button {
+        top: 5px;
+        left: 5px;
+    }
+}
+
+/* טלפון קטן */
+@media (max-width: 480px) {
+    .centered-container {
+        padding-top: 8vh;
+    }
+
+    h1 {
+        font-size: clamp(0.85rem, 4vw, 1.1rem);
+        padding: 0 10px;
+        line-height: 2;
+    }
+
+    h1 iframe {
+        width: 95vw;
+        max-width: 300px;
+        height: 80px;
+        margin: 8px 0;
+    }
+
+    .button {
+        padding: 6px 12px;
+    }
 }
