@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Business card</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
     <!-- אפקט מעבר ערוץ -->
@@ -12,27 +12,27 @@
 
     <!-- רקע וידאו -->
     <video autoplay loop muted playsinline id="background-video">
-        <source src="{{ url_for('static', filename='videos/moonwalk.mp4') }}" type="video/mp4">
+        <source src="static/videos/moonwalk.mp4" type="video/mp4">
         הדפדפן שלך לא תומך בסרטונים.
     </video>
 
     <!-- רקע GIF -->
-    <img id="background-gif" src="{{ url_for('static', filename='images/static.gif') }}" alt="GIF רקע" />
+    <img id="background-gif" src="static/images/static.gif" alt="GIF רקע" />
 
     <!-- שליטה על רקע ומוזיקה -->
     <div class="top-controls">
         <button id="play-btn" class="music-button">
-            <img src="{{ url_for('static', filename='images/PLAY.png') }}" alt="Play">
+            <img src="static/images/PLAY.png" alt="Play">
         </button>
         <button id="pause-btn" class="music-button">
-            <img src="{{ url_for('static', filename='images/PUOSE.png') }}" alt="Pause">
+            <img src="static/images/PUOSE.png" alt="Pause">
         </button>
-        <img id="toggle-background" class="tv-button" src="{{ url_for('static', filename='images/next.png') }}" alt="החלף רקע">
+        <img id="toggle-background" class="tv-button" src="static/images/next.png" alt="החלף רקע">
     </div>
 
     <!-- נגן מוזיקה -->
     <audio id="audio-player" autoplay loop>
-        <source src="{{ url_for('static', filename='music/Lucy_in_Disguise-1987.mp3') }}" type="audio/mpeg">
+        <source src="static/music/Lucy_in_Disguise-1987.mp3" type="audio/mpeg">
         הדפדפן שלך אינו תומך בתגית השמע.
     </audio>
 
@@ -42,7 +42,7 @@
             היי! אני
             <span class="hover-container img text-accent">
                 <strong>שלומי וקנין</strong>
-                <img class="image1" src="{{ url_for('static', filename='images/pixelated_image.jpeg') }}" alt="שלומי וקנין">
+                <img class="image1" src="static/images/pixelated_image.jpeg" alt="שלומי וקנין">
             </span><br>
             - גר בקדמה במחוז דרום, בהכשרתי אני<br>
             <strong class="ripple-effect text-accent">BIM MANAGER AND ARCHITECTURAL ENGINEER</strong><br>
@@ -52,12 +52,12 @@
             של משרד האדריכלים
             <span class="hover-container img text-accent">
                 <strong>בר אוריין</strong>
-                <img class="image2" src="{{ url_for('static', filename='images/27709490_973625679463046_4043216057836764719_o.png') }}" alt="בר אוריין">
+                <img class="image2" src="static/images/27709490_973625679463046_4043216057836764719_o.png" alt="בר אוריין">
             </span><br><br>
             <br>אני אדם מאוד סקרן, חובב טבע, נגינה<br>
             מוזיקה ורקע שחור ברוויט<br>
             הנה כמה
-            <a href="{{ url_for('playlist') }}" class="playlist-link">פלייליסטים</a><br>
+            <a href="playlist.html" class="playlist-link">פלייליסטים</a><br>
             שעוזרים לי להיות במצב
             <a href="https://he.wikipedia.org/wiki/זרימה_(פסיכולוגיה)" target="_blank" class="text-accent link-clean">
                 <strong>זרימה</strong>
@@ -69,8 +69,8 @@
     </div>
 
     <!-- כפתור צור קשר -->
-    <a href="{{ url_for('contact') }}" class="button">צור קשר</a>
+    <a href="contact.html" class="button">צור קשר</a>
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="static/js/script.js"></script>
 </body>
 </html>
