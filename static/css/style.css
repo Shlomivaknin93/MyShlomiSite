@@ -63,45 +63,46 @@ body {
     right: 15px;
     display: flex;
     flex-direction: row;
-    gap: 12px;
+    gap: 10px;
     z-index: 100;
 }
 
 .media-btn {
     display: flex;
     align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
+    justify-content: center;
+    padding: 8px 14px;
     font-family: var(--font-main);
-    font-size: clamp(0.8rem, 2vw, 1rem);
+    font-size: clamp(0.75rem, 2vw, 1rem);
     color: var(--color-text);
-    background-color: rgba(0, 0, 0, 0.6);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 8px;
+    background-color: var(--color-bg);
+    border: 3px solid var(--color-text);
+    box-shadow: 4px 4px 0 var(--color-text);
     cursor: pointer;
-    transition: all 0.2s ease;
-    backdrop-filter: blur(5px);
+    transition: all 0.1s ease;
     white-space: nowrap;
+    image-rendering: pixelated;
 }
 
 .media-btn:hover {
-    background-color: rgba(255, 255, 255, 0.15);
+    background-color: var(--color-accent);
+    color: var(--color-bg);
     border-color: var(--color-accent);
-    transform: translateY(-2px);
+    box-shadow: 4px 4px 0 var(--color-text);
 }
 
 .media-btn:active {
-    transform: scale(0.95);
-    background-color: rgba(255, 255, 255, 0.2);
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0 var(--color-text);
 }
 
 .btn-icon {
-    font-size: clamp(0.9rem, 2.5vw, 1.2rem);
-    line-height: 1;
+    display: none;
 }
 
 .btn-text {
-    font-size: clamp(0.7rem, 1.8vw, 0.9rem);
+    font-size: clamp(0.7rem, 2vw, 0.95rem);
+    letter-spacing: 1px;
 }
 
 /* ==== BUTTONS ==== */
@@ -280,16 +281,17 @@ h1 {
     }
 
     .media-btn {
-        padding: 6px 12px;
-        gap: 4px;
+        padding: 6px 10px;
+        border-width: 2px;
+        box-shadow: 3px 3px 0 var(--color-text);
     }
 
-    .btn-icon {
-        font-size: clamp(0.8rem, 3vw, 1rem);
+    .media-btn:active {
+        box-shadow: 1px 1px 0 var(--color-text);
     }
 
     .btn-text {
-        font-size: clamp(0.6rem, 2vw, 0.8rem);
+        font-size: clamp(0.6rem, 2.5vw, 0.8rem);
     }
 }
 
@@ -324,17 +326,18 @@ h1 {
     }
 
     .media-btn {
-        padding: 5px 10px;
-        gap: 3px;
-        border-radius: 6px;
+        padding: 4px 8px;
+        border-width: 2px;
+        box-shadow: 2px 2px 0 var(--color-text);
     }
 
-    .btn-icon {
-        font-size: clamp(0.7rem, 4vw, 0.9rem);
+    .media-btn:active {
+        transform: translate(1px, 1px);
+        box-shadow: 1px 1px 0 var(--color-text);
     }
 
     .btn-text {
-        font-size: clamp(0.55rem, 3vw, 0.7rem);
+        font-size: clamp(0.5rem, 3.5vw, 0.7rem);
     }
 }
 
