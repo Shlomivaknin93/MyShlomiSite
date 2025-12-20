@@ -3,127 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shlomi Vaknin - OS Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <title>Business card</title>
+    <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
+    <!-- אפקט מעבר ערוץ -->
+    <div id="channel-switch-effect"></div>
 
-    <div class="top-bar">
-        <div class="os-logo">SV</div>
-        <div class="os-title">Shlomi Vaknin Portfolio OS</div>
-        <div class="os-controls">
-            <span>_</span> <span>□</span> <span>X</span>
-        </div>
+    <!-- רקע וידאו -->
+    <video autoplay loop muted playsinline id="background-video">
+        <source src="static/videos/moonwalk.mp4" type="video/mp4">
+        הדפדפן שלך לא תומך בסרטונים.
+    </video>
+
+    <!-- רקע GIF -->
+    <img id="background-gif" src="static/images/static.gif" alt="GIF רקע" />
+
+    <!-- שליטה על רקע ומוזיקה -->
+    <div class="top-controls">
+        <button id="play-btn" class="music-button">
+            <img src="static/images/PLAY.png" alt="Play">
+        </button>
+        <button id="pause-btn" class="music-button">
+            <img src="static/images/PUOSE.png" alt="Pause">
+        </button>
+        <img id="toggle-background" class="tv-button" src="static/images/next.png" alt="החלף רקע">
     </div>
 
-    <div class="desktop-container">
-        
-        <aside class="toolbar">
-            <div class="tool active" title="Move">Move</div>
-            <div class="tool" title="Edit">Edit</div>
-            <div class="tool" title="BIM">BIM</div>
-            <div class="tool" title="Code">Code</div>
-            <div class="tool" title="Music">♫</div>
-            <div class="color-picker"></div>
-        </aside>
+    <!-- נגן מוזיקה -->
+    <audio id="audio-player" autoplay loop>
+        <source src="static/music/Lucy_in_Disguise-1987.mp3" type="audio/mpeg">
+        הדפדפן שלך אינו תומך בתגית השמע.
+    </audio>
 
-        <main class="workspace">
-
-            <div class="window photo-window">
-                <div class="window-header">
-                    <span>Profile_Shlomi.jpg</span>
-                    <div class="btns"><span>-</span><span>x</span></div>
-                </div>
-                <div class="window-content profile-content">
-                    <div class="image-wrapper">
-                        <img src="static/images/pixelated_image.jpeg" alt="Shlomi Vaknin" class="profile-pic">
-                        <div class="hand-note">זה אני!</div>
-                    </div>
-                    <h2>שלומי וקנין</h2>
-                    <p class="subtitle">BIM Manager & Arch. Engineer</p>
-                    <p>גר בקדמה, דרום.</p>
-                </div>
-            </div>
-
-            <div class="window about-window">
-                <div class="window-header">
-                    <span>About_Me.txt</span>
-                    <div class="btns"><span>-</span><span>□</span><span>x</span></div>
-                </div>
-                <div class="window-content text-content">
-                    <h3>קצת עליי</h3>
-                    <p>נכון להיום אני ה-<strong>HEAD OF THE BIM DEPARTMENT</strong> של משרד האדריכלים <span class="highlight">בר אוריין</span>.</p>
-                    <p>אני חובב פייתון, טכנולוגיה על כל גווניה ופיצה מושבע 🍕.</p>
-                    <p>אדם סקרן מאוד, חובב טבע, נגינה ורקע שחור ב-Revit.</p>
-                    <div class="action-area">
-                        <a href="static/images/cv_shlomivaknin.pdf" download class="retro-btn">📄 הורדת קו"ח</a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="window skills-window">
-                <div class="window-header">
-                    <span>Skills.png</span>
-                    <div class="btns"><span>-</span><span>x</span></div>
-                </div>
-                <div class="window-content grid-icons">
-                    <div class="skill-item">
-                        <div class="circle">Rvt</div>
-                        <span>Revit</span>
-                    </div>
-                    <div class="skill-item">
-                        <div class="circle">Py</div>
-                        <span>Python</span>
-                    </div>
-                    <div class="skill-item">
-                        <div class="circle">BIM</div>
-                        <span>Manage</span>
-                    </div>
-                    <div class="skill-item">
-                        <div class="circle">Arc</div>
-                        <span>Arch</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="window music-window">
-                <div class="window-header">
-                    <span>Spotify_Playlist.exe</span>
-                    <div class="btns"><span>-</span><span>x</span></div>
-                </div>
-                <div class="window-content scrollable">
-                    <p>מוזיקה למצב זרימה (Flow):</p>
-                    <div class="spotify-embed">
-                        <label>פלייליסט לבדיקת מודלים</label>
-                        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-                    </div>
-                    <div class="spotify-embed">
-                        <label>אווירת תכנות</label>
-                         <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWZeKCadgRdKQ?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-                    </div>
-                </div>
-            </div>
-
-            <div class="window contact-window">
-                <div class="window-header">
-                    <span>Contact_Info</span>
-                    <div class="btns"><span>-</span><span>x</span></div>
-                </div>
-                <div class="window-content list-content">
-                    <a href="tel:+972501234567" class="contact-row">
-                        <span class="icon">📞</span> 050-2245810
-                    </a>
-                    <a href="mailto:shlomies150@gmail.com" class="contact-row">
-                        <span class="icon">📧</span> shlomies150@gmail.com
-                    </a>
-                    <a href="http://maps.google.com/?q=Kidma" target="_blank" class="contact-row">
-                        <span class="icon">📍</span> קדמה, רחוב האומנים
-                    </a>
-                </div>
-            </div>
-
-        </main>
+    <!-- תוכן מרכזי -->
+    <div class="centered-container centered-text">
+        <h1>
+            היי! אני
+            <span class="hover-container img text-accent">
+                <strong>שלומי וקנין</strong>
+                <img class="image1" src="static/images/pixelated_image.jpeg" alt="שלומי וקנין">
+            </span><br>
+            - גר בקדמה במחוז דרום, בהכשרתי אני<br>
+            <strong class="ripple-effect text-accent">BIM MANAGER AND ARCHITECTURAL ENGINEER</strong><br>
+            חובב פייתון, טכנולוגיה על כל גווניה ופיצה מושבע<br><br>
+            - נכון להיום אני ה<br>
+            <strong class="ripple-effect text-accent">HEAD OF THE BIM DEPARTMENT</strong><br>
+            של משרד האדריכלים
+            <span class="hover-container img text-accent">
+                <strong>בר אוריין</strong>
+                <img class="image2" src="static/images/27709490_973625679463046_4043216057836764719_o.png" alt="בר אוריין">
+            </span><br><br>
+            <br>אני אדם מאוד סקרן, חובב טבע, נגינה<br>
+            מוזיקה ורקע שחור ברוויט<br>
+            הנה כמה
+            <a href="playlist.html" class="playlist-link">פלייליסטים</a><br>
+            שעוזרים לי להיות במצב
+            <a href="https://he.wikipedia.org/wiki/זרימה_(פסיכולוגיה)" target="_blank" class="text-accent link-clean">
+                <strong>זרימה</strong>
+            </a><br><br>
+            <a href="static/images/cv_shlomivaknin.pdf" download class="cv-link cv-download-bg">
+                להורדת קו"ח
+            </a>
+        </h1>
     </div>
+
+    <!-- כפתור צור קשר -->
+    <a href="contact.html" class="button">צור קשר</a>
+
+    <script src="static/js/script.js"></script>
 </body>
 </html>
