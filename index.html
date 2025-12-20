@@ -20,14 +20,19 @@
     <img id="background-gif" src="static/images/static.gif" alt="GIF רקע" />
 
     <!-- שליטה על רקע ומוזיקה -->
-    <div class="top-controls">
-        <button id="play-btn" class="music-button">
-            <img src="static/images/PLAY.png" alt="Play">
+    <div class="media-controls">
+        <button id="play-btn" class="media-btn" title="נגן מוזיקה">
+            <span class="btn-icon">▶</span>
+            <span class="btn-text">נגן</span>
         </button>
-        <button id="pause-btn" class="music-button">
-            <img src="static/images/PUOSE.png" alt="Pause">
+        <button id="pause-btn" class="media-btn" title="עצור מוזיקה">
+            <span class="btn-icon">⏸</span>
+            <span class="btn-text">עצור</span>
         </button>
-        <img id="toggle-background" class="tv-button" src="static/images/next.png" alt="החלף רקע">
+        <button id="toggle-background" class="media-btn" title="החלף רקע">
+            <span class="btn-icon">📺</span>
+            <span class="btn-text">החלף</span>
+        </button>
     </div>
 
     <!-- נגן מוזיקה -->
