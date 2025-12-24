@@ -17,24 +17,21 @@
         </div>
 
         <div class="home-nav">
-            <a href="about.html" class="main-btn">About Me</a>
-            <a href="projects.html" class="main-btn">My Projects</a>
+            <a href="about.html" class="main-btn">ABOUT ME</a>
+            
+            <a href="projects.html" class="main-btn">MY PROJECTS</a>
         </div>
 
     </div>
 
     <script>
-        // העתקתי את לוגיקת המעבר הפשוטה אם תרצה אותה
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', function(e) {
-                // רק אם זה קישור פנימי
                 if(this.hostname === window.location.hostname) {
                     e.preventDefault();
                     const href = this.getAttribute('href');
                     const effect = document.getElementById('channel-switch-effect');
-                    
-                    effect.style.opacity = '1'; // הפעלת רעש סטטי
-                    
+                    effect.style.opacity = '1';
                     setTimeout(() => {
                         window.location.href = href;
                     }, 300);
