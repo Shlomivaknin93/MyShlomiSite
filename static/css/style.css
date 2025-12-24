@@ -439,3 +439,131 @@ h1 {
     box-shadow: 0 0 15px rgba(255,255,255,0.8);
 }
 
+/* ==== PROJECTS PAGE STYLES ==== */
+
+.projects-container {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-title {
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    color: white;
+    margin-bottom: 50px;
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* הגריד של הכרטיסיות */
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 40px;
+    justify-content: center;
+}
+
+/* עיצוב הכרטיס עצמו */
+.tech-card {
+    background: #000;
+    border: 2px solid white;
+    box-shadow: 8px 8px 0px rgba(255, 255, 255, 0.2);
+    transition: transform 0.2s;
+    display: flex;
+    flex-direction: column;
+}
+
+.tech-card:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0px rgba(255, 255, 255, 0.4);
+}
+
+/* כותרת "קובץ" כמו בטרמינל */
+.card-header {
+    background: white;
+    color: black;
+    padding: 10px 15px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    border-bottom: 2px solid white;
+}
+
+.status-dot {
+    height: 10px;
+    width: 10px;
+    background-color: #ff0000;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 10px;
+    box-shadow: 0 0 5px #ff0000;
+}
+
+/* אזור התמונה - כאן הקסם שמתקן את הגודל */
+.card-visual {
+    height: 200px; /* גובה קבוע */
+    background: #222;
+    overflow: hidden; /* חותך את מה שחורג */
+    border-bottom: 2px solid white;
+}
+
+.project-gif {
+    width: 100%; /* רוחב מלא של הכרטיס */
+    height: 100%; /* גובה מלא של האזור */
+    object-fit: cover; /* חותך את התמונה יפה שלא תימעך */
+    filter: grayscale(100%);
+    transition: filter 0.3s;
+}
+
+.tech-card:hover .project-gif {
+    filter: grayscale(0%);
+}
+
+/* תוכן טקסטואלי */
+.card-content {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-content h3 {
+    margin-top: 0;
+    font-family: var(--font-main);
+    font-size: 1.4rem;
+    color: var(--color-accent);
+    margin-bottom: 10px;
+}
+
+.description {
+    font-family: Arial, sans-serif;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: #ccc;
+    margin-bottom: 20px;
+    text-align: right;
+    direction: rtl;
+}
+
+/* תגיות טכנולוגיה */
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.tech-tags span {
+    background: transparent;
+    border: 1px solid white;
+    color: white;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+}
+
