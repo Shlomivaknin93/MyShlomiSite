@@ -568,57 +568,75 @@ h1 {
     text-transform: uppercase;
 }
 
-/* ==== TV CHANNEL CONTROLS (משופר) ==== */
+/* ==== TV CHANNEL CONTROLS (FIXED RETRO LOOK) ==== */
 
 .channel-controls-container {
     position: fixed;
     top: 25px;
     right: 25px;
     display: flex;
+    flex-direction: column; /* מסדר את הערוץ מעל הכפתור */
     align-items: center;
-    gap: 15px;
-    z-index: 2000;
+    gap: 10px;
+    z-index: 9999; /* שכבה הכי עליונה */
 }
 
-/* טקסט ערוץ - לבן וברור */
-.channel-osd {
-    font-family: 'Courier New', monospace;
-    font-size: 1.8rem;
+/* 1. עיצוב מספר הערוץ - שייראה כמו תצוגת OSD דיגיטלית */
+#channel-display {
+    font-family: 'Courier New', monospace; /* פונט מונוספייס */
+    font-size: 1.5rem;
     font-weight: bold;
-    color: #ffffff; /* לבן */
-    text-shadow: 2px 2px 0px #000000; /* צל שחור כדי שיראו על כל רקע */
+    color: #00ff00 !important; /* ירוק ניאון חזק */
+    text-shadow: 0px 0px 5px rgba(0, 255, 0, 0.8); /* הילה זוהרת */
+    background-color: rgba(0, 0, 0, 0.7); /* רקע שחור חצי שקוף לקריאות */
+    padding: 5px 12px;
+    border: 1px solid #00ff00; /* מסגרת דקה ירוקה */
+    border-radius: 4px;
+    pointer-events: none;
     letter-spacing: 2px;
-    pointer-events: none; /* שלא יפריע ללחיצות */
 }
 
-/* כפתור טלוויזיה רטרו (פלסטיק לחיץ) */
-.retro-channel-btn {
-    background-color: #333; /* אפור כהה */
-    color: #ccc;
-    font-family: 'Courier New', monospace;
+/* 2. עיצוב הכפתור - פלסטיק שחור בולט */
+#switch-channel-btn {
+    background-color: #2b2b2b !important; /* אפור כהה מאוד */
+    color: #aaaaaa !important; /* טקסט אפור בהיר */
+    font-family: sans-serif;
     font-weight: bold;
-    font-size: 1rem;
-    border: none;
+    font-size: 0.9rem;
     padding: 10px 15px;
     cursor: pointer;
-    
-    /* אפקט תלת-ממד של כפתור פלסטיק */
-    box-shadow: 
-        inset 2px 2px 0px rgba(255, 255, 255, 0.2), /* אור מלמעלה */
-        inset -2px -2px 0px rgba(0, 0, 0, 0.5),   /* צל מלמטה */
-        3px 3px 0px #000;                          /* צל חיצוני */
-        
-    transition: all 0.1s;
     text-transform: uppercase;
+    
+    /* יצירת אפקט תלת-ממד של כפתור פיזי */
+    border-top: 2px solid #555 !important;   /* אור מלמעלה */
+    border-left: 2px solid #555 !important;  /* אור משמאל */
+    border-bottom: 4px solid #000 !important; /* צל כבד מלמטה */
+    border-right: 4px solid #000 !important;  /* צל כבד מימין */
+    border-radius: 4px;
+    
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5); /* צל חיצוני */
+    transition: all 0.1s ease;
 }
 
-/* אפקט לחיצה (הכפתור שוקע) */
-.retro-channel-btn:active {
-    transform: translate(2px, 2px); /* זז למטה וימינה */
-    box-shadow: 
-        inset 2px 2px 0px rgba(0, 0, 0, 0.5),
-        inset -2px -2px 0px rgba(255, 255, 255, 0.1),
-        1px 1px 0px #000;
+/* מצב לחיצה - הכפתור שוקע */
+#switch-channel-btn:active {
+    background-color: #222 !important;
+    transform: translate(2px, 2px); /* מזיז את הכפתור פיזית */
+    
+    /* הופך את הגבולות כדי לתת תחושת שקיעה */
+    border-top: 4px solid #000 !important;
+    border-left: 4px solid #000 !important;
+    border-bottom: 2px solid #555 !important;
+    border-right: 2px solid #555 !important;
+    
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.8); /* צל פנימי */
+    color: #00ff00 !important; /* הטקסט נדלק בירוק בלחיצה */
+}
+
+/* מצב מעבר עכבר */
+#switch-channel-btn:hover {
+    background-color: #3a3a3a !important;
+    color: white !important;
 }
 
 /* התאמה למובייל */
@@ -627,13 +645,7 @@ h1 {
         top: 15px;
         right: 15px;
     }
-    
-    .channel-osd {
+    #channel-display {
         font-size: 1.2rem;
-    }
-
-    .retro-channel-btn {
-        padding: 8px 12px;
-        font-size: 0.9rem;
     }
 }
