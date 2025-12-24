@@ -56,15 +56,32 @@ body {
     padding: 20px;
 }
 
-/* ==== CONTROL BAR ==== */
 .top-controls {
     position: fixed;
-    top: clamp(8px, 2vw, 15px);
-    right: clamp(8px, 2vw, 15px);
+    top: 15px; /* מרווח מהחלק העליון */
+    right: 15px;
     display: flex;
     flex-direction: row;
-    gap: clamp(6px, 2vw, 12px);
+    gap: 15px; /* מרווח בין הכפתורים */
     z-index: 100;
+    
+    /* זה הקסם: מיישר את כל האלמנטים לתחתית, כך שהכפתורים יהיו בקו אחד */
+    align-items: flex-end; 
+}
+
+/* התאמה קטנה כדי שכפתורי המוזיקה יהיו באותו גודל בדיוק כמו כפתור הערוצים */
+.retro-tv-btn {
+    min-width: 80px; /* רוחב אחיד לכל הכפתורים */
+    display: flex;
+    justify-content: center; /* מרכוז הטקסט */
+    align-items: center;
+    gap: 5px; /* רווח בין הטקסט לאייקון אם יש */
+}
+
+/* מוודא שהקונטיינר של הערוצים לא זז */
+.top-controls .channel-controls-container {
+    margin: 0;
+    transform: none; /* ביטלתי את ההקטנה ממקודם כדי שיהיו באותו גודל */
 }
 
 /* ==== BUTTONS ==== */
