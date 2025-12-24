@@ -377,21 +377,25 @@ h1 {
 
 /* אפקט מכונת כתיבה לטקסט */
 .typewriter h1 {
-    font-family: 'Courier New', monospace; /* פונט טרמינל */
+    font-family: var(--font-main); 
     color: var(--color-text);
-    overflow: hidden; /* מסתיר את הטקסט שטרם נכתב */
-    border-right: .15em solid var(--color-accent); /* סמן מהבהב */
-    white-space: nowrap; /* שומר הכל בשורה אחת */
+    overflow: hidden; 
+    border-right: .15em solid var(--color-accent); 
+    white-space: nowrap; 
     margin: 0 auto;
     letter-spacing: .10em;
-    font-size: clamp(1rem, 3vw, 2.5rem);
-    width: 0; /* מתחיל מרוחב 0 */
+    
+    /* התאמות גודל לפונט הפיקסלי */
+    font-size: clamp(1rem, 2.5vw, 2rem); 
+    width: 0;
+    
+    /* עדכנתי את מספר הצעדים (steps) ל-50 כדי שיתאים לאורך הטקסט החדש */
     animation: 
-        typing 3.5s steps(40, end) forwards,
+        typing 3.5s steps(50, end) forwards,
         blink-caret .75s step-end infinite;
 }
 
-/* האנימציה עצמה */
+/* שאר האנימציות נשארות אותו דבר */
 @keyframes typing {
     from { width: 0 }
     to { width: 100% }
