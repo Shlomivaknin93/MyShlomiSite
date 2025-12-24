@@ -15,6 +15,15 @@
         Your browser does not support the video tag.
     </video>
 
+    <img id="background-gif" src="static/images/static.gif" alt="Static Noise" />
+
+    <div class="channel-controls-container">
+        <div id="channel-display" class="channel-osd">CH 01</div>
+        <button id="switch-channel-btn" class="tv-button">
+            <img src="static/images/next.png" alt="Switch Channel">
+        </button>
+    </div>
+
     <div class="home-container">
         
         <div class="typewriter">
@@ -29,6 +38,7 @@
     </div>
 
     <script>
+        // --- לוגיקת מעבר עמודים ---
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', function(e) {
                 if(this.hostname === window.location.hostname) {
@@ -41,6 +51,45 @@
                     }, 300);
                 }
             });
+        });
+
+        // --- לוגיקת החלפת ערוצים (TV Logic) ---
+        const switchBtn = document.getElementById('switch-channel-btn');
+        const channelDisplay = document.getElementById('channel-display');
+        const video = document.getElementById('background-video');
+        const staticGif = document.getElementById('background-gif');
+        const switchEffect = document.getElementById('channel-switch-effect');
+
+        let isVideoMode = true; // מתחילים בוידאו
+
+        switchBtn.addEventListener('click', function() {
+            // 1. הפעלת אפקט רעש סטטי קצר (כמו מעבר ערוץ)
+            switchEffect.style.opacity = '1';
+            
+            // שינוי מספר ערוץ רנדומלי
+            const randomChannel = Math.floor(Math.random() * 99) + 1;
+            channelDisplay.innerText = 'CH ' + randomChannel.toString().padStart(2, '0');
+
+            setTimeout(() => {
+                // 2. החלפת המקור אחרי 300 מילישניות
+                if (isVideoMode) {
+                    // מעבר לרעש סטטי קבוע
+                    video.style.display = 'none';
+                    staticGif.style.display = 'block';
+                    // הסתרת התוכן (אופציונלי - אם רוצים שיראו רק שלג)
+                    // document.querySelector('.home-container').style.opacity = '0.5'; 
+                } else {
+                    // חזרה לוידאו
+                    video.style.display = 'block';
+                    staticGif.style.display = 'none';
+                }
+                
+                isVideoMode = !isVideoMode; // היפוך מצב
+                
+                // 3. כיבוי אפקט המעבר
+                switchEffect.style.opacity = '0';
+
+            }, 300);
         });
     </script>
 </body>
