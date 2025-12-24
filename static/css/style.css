@@ -359,3 +359,79 @@ h1 {
     pointer-events: none;
     transition: opacity 0.3s ease-in-out;
 }
+/* ==== NEW HOME PAGE STYLES ==== */
+
+/* מסך הבית נקי וממורכז */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background-color: black; /* רקע שחור נקי */
+    background-image: url('../images/static.gif'); /* אופציונלי: אותו רקע סטטי עדין */
+    background-size: cover;
+    background-blend-mode: overlay;
+}
+
+/* אפקט מכונת כתיבה לטקסט */
+.typewriter h1 {
+    font-family: 'Courier New', monospace; /* פונט טרמינל */
+    color: var(--color-text);
+    overflow: hidden; /* מסתיר את הטקסט שטרם נכתב */
+    border-right: .15em solid var(--color-accent); /* סמן מהבהב */
+    white-space: nowrap; /* שומר הכל בשורה אחת */
+    margin: 0 auto;
+    letter-spacing: .10em;
+    font-size: clamp(1rem, 3vw, 2.5rem);
+    width: 0; /* מתחיל מרוחב 0 */
+    animation: 
+        typing 3.5s steps(40, end) forwards,
+        blink-caret .75s step-end infinite;
+}
+
+/* האנימציה עצמה */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: var(--color-accent) }
+}
+
+/* אזור הכפתורים */
+.home-nav {
+    margin-top: 50px;
+    display: flex;
+    gap: 30px;
+    opacity: 0; /* מתחיל נסתר */
+    animation: fadeIn 2s ease forwards;
+    animation-delay: 3.5s; /* מופיע רק אחרי שהכתיבה מסתיימת */
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* עיצוב כפתורים ראשיים */
+.main-btn {
+    border: 2px solid white;
+    padding: 15px 30px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    background: black;
+}
+
+.main-btn:hover {
+    background: white;
+    color: black;
+    box-shadow: 0 0 15px rgba(255,255,255,0.8);
+}
+
