@@ -649,3 +649,48 @@ h1 {
         font-size: 1.2rem;
     }
 }
+
+/* ==== מחלקת עיצוב לכפתור רטרו (להוסיף לכל כפתור שרוצים) ==== */
+
+.retro-tv-btn {
+    background-color: #2b2b2b !important; /* אפור כהה מאוד */
+    color: #aaaaaa !important; /* טקסט אפור בהיר */
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding: 10px 15px;
+    cursor: pointer;
+    text-transform: uppercase;
+    border: none; /* איפוס גבולות קודמים אם יש */
+    
+    /* יצירת אפקט תלת-ממד של כפתור פיזי */
+    border-top: 2px solid #555 !important;   /* אור מלמעלה */
+    border-left: 2px solid #555 !important;  /* אור משמאל */
+    border-bottom: 4px solid #000 !important; /* צל כבד מלמטה */
+    border-right: 4px solid #000 !important;  /* צל כבד מימין */
+    border-radius: 4px;
+    
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5); /* צל חיצוני */
+    transition: all 0.1s ease;
+}
+
+/* מצב לחיצה */
+.retro-tv-btn:active {
+    background-color: #222 !important;
+    transform: translate(2px, 2px); /* מזיז את הכפתור פיזית */
+    
+    /* הופך את הגבולות כדי לתת תחושת שקיעה */
+    border-top: 4px solid #000 !important;
+    border-left: 4px solid #000 !important;
+    border-bottom: 2px solid #555 !important;
+    border-right: 2px solid #555 !important;
+    
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.8); /* צל פנימי */
+    color: #00ff00 !important; /* הטקסט נדלק בירוק בלחיצה */
+}
+
+/* מצב מעבר עכבר */
+.retro-tv-btn:hover {
+    background-color: #3a3a3a !important;
+    color: white !important;
+}
