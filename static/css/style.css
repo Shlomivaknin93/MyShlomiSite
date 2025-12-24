@@ -369,10 +369,11 @@ h1 {
     align-items: center;
     height: 100vh;
     text-align: center;
-    background-color: black; /* רקע שחור נקי */
-    background-image: url('../images/static.gif'); /* אופציונלי: אותו רקע סטטי עדין */
-    background-size: cover;
-    background-blend-mode: overlay;
+    
+    /* שינוי: רקע חצי שקוף במקום שחור מלא, כדי שיראו את הוידאו */
+    background-color: rgba(0, 0, 0, 0.4); 
+    /* ביטלתי את תמונת ה-GIF ברקע כדי שהוידאו יהיה נקי */
+    /* background-image: url('../images/static.gif'); */ 
 }
 
 /* אפקט מכונת כתיבה לטקסט */
