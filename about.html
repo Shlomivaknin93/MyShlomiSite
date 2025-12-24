@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body>
+    <div style="position: absolute; top: 10px; left: 10px; z-index: 1000;">
+        <a href="index.html" class="button">HOME</a>
+    </div>
+
+    <div id="channel-switch-effect"></div>
+
+    <video autoplay loop muted playsinline id="background-video">
+        <source src="static/videos/moonwalk.mp4" type="video/mp4">
+        הדפדפן שלך לא תומך בסרטונים.
+    </video>
+
+    <img id="background-gif" src="static/images/static.gif" alt="GIF רקע" />
+
+    <div class="top-controls">
+        <button id="play-btn" class="music-button">
+            <img src="static/images/PLAY.png" alt="Play">
+        </button>
+        <button id="pause-btn" class="music-button">
+            <img src="static/images/PUOSE.png" alt="Pause">
+        </button>
+        <img id="toggle-background" class="tv-button" src="static/images/next.png" alt="החלף רקע">
+    </div>
+
+    <audio id="audio-player" autoplay loop>
+        <source src="static/music/Lucy_in_Disguise-1987.mp3" type="audio/mpeg">
+    </audio>
+
+    <div class="centered-container centered-text">
+        <h1>
+            היי! אני
+            <span class="hover-container img text-accent">
+                <strong>שלומי וקנין</strong>
+                <img class="image1" src="static/images/pixelated_image.jpeg" alt="שלומי וקנין">
+            </span><br>
+            - גר בקדמה במחוז דרום, בהכשרתי אני<br>
+            <strong class="ripple-effect text-accent">BIM MANAGER AND ARCHITECTURAL ENGINEER</strong><br>
+            חובב פייתון, טכנולוגיה על כל גווניה ופיצה מושבע<br><br>
+            - נכון להיום אני ה<br>
+            <strong class="ripple-effect text-accent">HEAD OF THE BIM DEPARTMENT</strong><br>
+            של משרד האדריכלים
+            <span class="hover-container img text-accent">
+                <strong>בר אוריין</strong>
+                <img class="image2" src="static/images/27709490_973625679463046_4043216057836764719_o.png" alt="בר אוריין">
+            </span><br><br>
+            <br>אני אדם מאוד סקרן, חובב טבע, נגינה<br>
+            מוזיקה ורקע שחור ברוויט<br>
+            הנה כמה
+            <a href="playlist.html" class="playlist-link">פלייליסטים</a><br>
+            שעוזרים לי להיות במצב
+            <a href="https://he.wikipedia.org/wiki/זרימה_(פסיכולוגיה)" target="_blank" class="text-accent link-clean">
+                <strong>זרימה</strong>
+            </a><br><br>
+            <a href="static/images/cv_shlomivaknin.pdf" download class="cv-link cv-download-bg">
+                להורדת קו"ח
+            </a>
+        </h1>
+    </div>
+
+    <a href="contact.html" class="button" style="top: auto; bottom: 5vh; left: 5vw;">צור קשר</a>
+
+    <script src="static/js/script.js"></script>
+</body>
+</html>
