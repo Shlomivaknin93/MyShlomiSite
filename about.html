@@ -8,9 +8,9 @@
 </head>
 <body>
 
-    <div style="position: absolute; top: 30px; left: 30px; z-index: 2000; display: flex; gap: 20px;">
-        <a href="index.html" class="button" style="position: static; margin: 0;">HOME</a>
-        <a href="contact.html" class="button" style="position: static; margin: 0;">CONTACT</a>
+    <div class="nav-container">
+        <a href="index.html" class="button">HOME</a>
+        <a href="contact.html" class="button">CONTACT</a>
     </div>
 
     <div id="channel-switch-effect"></div>
@@ -22,7 +22,11 @@
 
     <img id="background-gif" src="static/images/static.gif" alt="GIF רקע" />
 
-    <div class="top-controls" style="right: 160px;">
+    <div class="top-controls">
+        <div id="channel-display">TV</div>
+
+        <button id="toggle-background" class="retro-tv-btn">CH +</button>
+
         <button id="play-btn" class="retro-tv-btn">
             PLAY ▶
         </button>
@@ -30,11 +34,6 @@
         <button id="pause-btn" class="retro-tv-btn">
             STOP ❚❚
         </button>
-    </div>
-
-    <div class="channel-controls-container">
-        <div id="channel-display">TV</div>
-        <button id="toggle-background" class="retro-tv-btn">CH +</button>
     </div>
 
     <audio id="audio-player" autoplay loop>
