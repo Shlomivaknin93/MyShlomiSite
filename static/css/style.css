@@ -56,32 +56,45 @@ body {
     padding: 20px;
 }
 
-.top-controls {
+/* ==== NEW: NAVIGATION CONTAINER (Top Left) ==== */
+/* זה הקונטיינר החדש ל-HOME ו-CONTACT */
+.nav-container {
     position: fixed;
-    top: 15px; /* מרווח מהחלק העליון */
-    right: 15px;
+    top: 20px;
+    left: 20px;
+    z-index: 2000;
     display: flex;
     flex-direction: row;
-    gap: 15px; /* מרווח בין הכפתורים */
-    z-index: 100;
-    
-    /* זה הקסם: מיישר את כל האלמנטים לתחתית, כך שהכפתורים יהיו בקו אחד */
-    align-items: flex-end; 
+    gap: 20px; /* רווח בין הכפתורים */
 }
 
-/* התאמה קטנה כדי שכפתורי המוזיקה יהיו באותו גודל בדיוק כמו כפתור הערוצים */
-.retro-tv-btn {
-    min-width: 80px; /* רוחב אחיד לכל הכפתורים */
+/* ==== TOP CONTROLS (Top Right - Holds Music & TV) ==== */
+/* זה הקונטיינר החדש שמחזיק את צד ימין */
+.top-controls {
+    position: fixed;
+    top: 20px; 
+    right: 20px;
     display: flex;
-    justify-content: center; /* מרכוז הטקסט */
-    align-items: center;
-    gap: 5px; /* רווח בין הטקסט לאייקון אם יש */
+    flex-direction: row;
+    gap: 30px; /* רווח גדול בין הנגן לטלוויזיה */
+    z-index: 2000;
+    align-items: flex-end; /* מיישר את הכפתורים לתחתית כדי שייראו טוב עם הטלוויזיה */
 }
 
-/* מוודא שהקונטיינר של הערוצים לא זז */
-.top-controls .channel-controls-container {
-    margin: 0;
-    transform: none; /* ביטלתי את ההקטנה ממקודם כדי שיהיו באותו גודל */
+/* קבוצת כפתורי המוזיקה בתוך ה-Top Controls */
+.music-controls-group {
+    display: flex;
+    gap: 10px;
+    padding-bottom: 5px; /* יישור עדין מול כפתור הערוצים */
+}
+
+/* התאמה לכפתורי הרטרו */
+.retro-tv-btn {
+    min-width: 80px; 
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    gap: 5px; 
 }
 
 /* ==== BUTTONS ==== */
@@ -93,18 +106,19 @@ body {
     background-color: transparent;
     font-size: 2vw;
     cursor: pointer;
-    position: absolute;
-    top: 5vh;
-    left: 5vw;
     border: none;
     transition: background-color 0.3s ease;
+    
+    /* שינוי: הסרנו את ה-absolute/top/left כדי שלא יעלו אחד על השני */
+    position: relative; 
+    margin: 0;
 }
 
 .button:hover {
     background-color: var(--color-hover);
 }
 
-/* ==== MUSIC + TV BUTTONS ==== */
+/* ==== MUSIC + TV BUTTONS (ICONS ONLY) ==== */
 .music-button,
 .tv-button {
     background: none;
@@ -267,12 +281,23 @@ h1 {
         margin-top: 30vh;
         padding: 0 15px;
     }
+    
+    /* עדכון למיקומים במובייל */
+    .nav-container {
+        top: 10px;
+        left: 10px;
+        gap: 10px;
+    }
+
+    .top-controls {
+        top: 10px;
+        right: 10px;
+        gap: 10px;
+    }
 
     .button {
         font-size: clamp(0.9rem, 4vw, 1.3rem);
         padding: 8px 16px;
-        top: 3vh;
-        left: 3vw;
     }
 
     .header h1 {
@@ -291,12 +316,6 @@ h1 {
     .image2 {
         top: 60%;
         left: 50%;
-    }
-
-    .top-controls {
-        right: 3vw;
-        top: 10px;
-        gap: 8px;
     }
 
     .music-button,
@@ -331,11 +350,6 @@ h1 {
 
     .image1, .image2 {
         width: 80px;
-    }
-
-    .top-controls {
-        right: 2vw;
-        gap: 5px;
     }
 
     .music-button,
@@ -389,8 +403,6 @@ h1 {
     
     /* שינוי: רקע חצי שקוף במקום שחור מלא, כדי שיראו את הוידאו */
     background-color: rgba(0, 0, 0, 0.4); 
-    /* ביטלתי את תמונת ה-GIF ברקע כדי שהוידאו יהיה נקי */
-    /* background-image: url('../images/static.gif'); */ 
 }
 
 /* אפקט מכונת כתיבה לטקסט */
@@ -587,15 +599,14 @@ h1 {
 
 /* ==== TV CHANNEL CONTROLS (FIXED RETRO LOOK) ==== */
 
+/* שינוי: הורדנו את ה-Fixed כי עכשיו זה בתוך הקונטיינר הראשי */
 .channel-controls-container {
-    position: fixed;
-    top: 25px;
-    right: 25px;
+    position: relative; /* זורם בתוך הקונטיינר */
     display: flex;
-    flex-direction: column; /* מסדר את הערוץ מעל הכפתור */
+    flex-direction: column; 
     align-items: center;
     gap: 10px;
-    z-index: 9999; /* שכבה הכי עליונה */
+    /* הוסר ה-z-index והמיקומים, ההורה מטפל בזה */
 }
 
 /* 1. עיצוב מספר הערוץ - שייראה כמו תצוגת OSD דיגיטלית */
@@ -654,17 +665,6 @@ h1 {
 #switch-channel-btn:hover {
     background-color: #3a3a3a !important;
     color: white !important;
-}
-
-/* התאמה למובייל */
-@media (max-width: 768px) {
-    .channel-controls-container {
-        top: 15px;
-        right: 15px;
-    }
-    #channel-display {
-        font-size: 1.2rem;
-    }
 }
 
 /* ==== מחלקת עיצוב לכפתור רטרו (להוסיף לכל כפתור שרוצים) ==== */
