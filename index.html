@@ -17,7 +17,7 @@
 
     <img id="background-gif" src="static/images/static.gif" alt="Static Noise" />
 
-    <div class="channel-controls-container">
+    <div class="top-controls">
         <div id="channel-display">CH 01</div> 
         
         <button id="switch-channel-btn" class="retro-tv-btn">
@@ -62,31 +62,33 @@
         const switchEffect = document.getElementById('channel-switch-effect');
 
         let isVideoMode = true; // מתחילים בוידאו
+        let currentChannel = 1; // שינוי 2: משתנה שמתחיל ב-1
 
         if (switchBtn) {
             switchBtn.addEventListener('click', function() {
-                // 1. הפעלת אפקט רעש סטטי קצר (כמו מעבר ערוץ)
+                // 1. הפעלת אפקט רעש סטטי
                 switchEffect.style.opacity = '1';
                 
-                // שינוי מספר ערוץ רנדומלי
-                const randomChannel = Math.floor(Math.random() * 99) + 1;
+                // שינוי 2: קידום הערוץ בצורה סדרתית (לא רנדומלית)
+                currentChannel++;
+                if (currentChannel > 99) currentChannel = 1; // חזרה ל-1 אחרי 99
+
                 if (channelDisplay) {
-                    channelDisplay.innerText = 'CH ' + randomChannel.toString().padStart(2, '0');
+                    // עדכון הטקסט (CH 02, CH 03...)
+                    channelDisplay.innerText = 'CH ' + currentChannel.toString().padStart(2, '0');
                 }
 
                 setTimeout(() => {
-                    // 2. החלפת המקור אחרי 300 מילישניות
+                    // 2. החלפת המקור (וידאו <-> GIF)
                     if (isVideoMode) {
-                        // מעבר לרעש סטטי קבוע
                         if(video) video.style.display = 'none';
                         if(staticGif) staticGif.style.display = 'block';
                     } else {
-                        // חזרה לוידאו
                         if(video) video.style.display = 'block';
                         if(staticGif) staticGif.style.display = 'none';
                     }
                     
-                    isVideoMode = !isVideoMode; // היפוך מצב
+                    isVideoMode = !isVideoMode;
                     
                     // 3. כיבוי אפקט המעבר
                     switchEffect.style.opacity = '0';
