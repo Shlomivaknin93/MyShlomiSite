@@ -711,3 +711,43 @@ h1 {
     background-color: #3a3a3a !important;
     color: white !important;
 }
+
+
+/* ========================================= */
+/* ====   תוספת לסידור כפתורים (חדש)    ==== */
+/* ========================================= */
+
+/* 1. הקונטיינר הראשי בצד ימין למעלה */
+.main-right-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2000;
+    display: flex;
+    flex-direction: column; /* מסדר את ה-CH מעל הנגן */
+    align-items: center;    /* ממרכז הכל */
+    gap: 15px;              /* רווח בין החלק של הטלוויזיה לחלק של המוזיקה */
+}
+
+/* 2. השורה של כפתורי המוזיקה (Play ליד Stop) */
+.music-row {
+    display: flex;
+    gap: 10px;
+}
+
+/* 3. מחלקה לכפיית גודל אחיד לכל שלושת הכפתורים */
+.exact-size {
+    width: 90px !important;  /* רוחב קבוע לכולם */
+    height: 45px !important; /* גובה קבוע לכולם */
+    padding: 0 !important;   /* ביטול ריפוד כדי שהטקסט יתמרכז */
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem !important;
+    margin: 0;
+}
+
+/* תיקון קטן לתצוגת ה-TV שתהיה יפה */
+#channel-display {
+    margin-bottom: 5px; 
+}
