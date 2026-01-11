@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="static/css/style.css">
 </head>
 <body>
-    <div style="position: absolute; top: 10px; left: 10px; z-index: 1000;">
+    <div style="position: absolute; top: 10px; left: 10px; z-index: 1000; display: flex; gap: 15px;">
         <a href="index.html" class="button">HOME</a>
         <a href="contact.html" class="button">CONTACT</a>
     </div>
@@ -22,13 +22,15 @@
     <img id="background-gif" src="static/images/static.gif" alt="GIF רקע" />
 
    <div class="top-controls">
-        <button id="play-btn" class="retro-tv-btn">
-            PLAY ▶
-        </button>
-        
-        <button id="pause-btn" class="retro-tv-btn" style="margin-right: 20px;">
-            STOP ❚❚
-        </button>
+        <div style="transform: translateX(-100px); display: inline-block;">
+            <button id="play-btn" class="retro-tv-btn">
+                PLAY ▶
+            </button>
+            
+            <button id="pause-btn" class="retro-tv-btn">
+                STOP ❚❚
+            </button>
+        </div>
     
         <div class="channel-controls-container">
             <div id="channel-display">TV</div>
