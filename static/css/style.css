@@ -1,4 +1,6 @@
-/* ==== ROOT VARIABLES ==== */
+/* =========================================
+   1. ROOT VARIABLES & FONTS
+   ========================================= */
 :root {
     --font-main: 'MyCustomFont', sans-serif;
     --color-bg: black;
@@ -6,16 +8,16 @@
     --color-hover: darkgray;
     --color-accent: lightcoral;
     --btn-size: clamp(35px, 8vw, 50px);
-    --tv-btn-size: clamp(35px, 8vw, 50px);
 }
 
-/* ==== FONT IMPORT ==== */
 @font-face {
     font-family: 'MyCustomFont';
     src: url('../fonts/STANB___.ttf') format('truetype');
 }
 
-/* ==== RESET ==== */
+/* =========================================
+   2. RESET & BASIC LAYOUT
+   ========================================= */
 html, body {
     margin: 0;
     padding: 0;
@@ -29,7 +31,6 @@ body {
     overflow-x: hidden;
 }
 
-/* ==== LAYOUT ==== */
 .centered-container {
     display: flex;
     flex-direction: column;
@@ -56,8 +57,9 @@ body {
     padding: 20px;
 }
 
-/* ==== NEW: NAVIGATION CONTAINER (Top Left) ==== */
-/* זה הקונטיינר החדש ל-HOME ו-CONTACT */
+/* =========================================
+   3. NAVIGATION (TOP LEFT) - HOME & CONTACT
+   ========================================= */
 .nav-container {
     position: fixed;
     top: 20px;
@@ -65,52 +67,26 @@ body {
     z-index: 2000;
     display: flex;
     flex-direction: row;
-    gap: 20px; /* רווח בין הכפתורים */
+    gap: 20px;
 }
 
-/* ==== TOP CONTROLS (Top Right - Holds Music & TV) ==== */
-/* זה הקונטיינר החדש שמחזיק את צד ימין */
-.top-controls {
-    position: fixed;
-    top: 20px; 
-    right: 20px;
-    display: flex;
-    flex-direction: row;
-    gap: 30px; /* רווח גדול בין הנגן לטלוויזיה */
-    z-index: 2000;
-    align-items: flex-end; /* מיישר את הכפתורים לתחתית כדי שייראו טוב עם הטלוויזיה */
-}
-
-/* קבוצת כפתורי המוזיקה בתוך ה-Top Controls */
-.music-controls-group {
-    display: flex;
-    gap: 10px;
-    padding-bottom: 5px; /* יישור עדין מול כפתור הערוצים */
-}
-
-/* התאמה לכפתורי הרטרו */
-.retro-tv-btn {
-    min-width: 80px; 
-    display: flex;
-    justify-content: center; 
-    align-items: center;
-    gap: 5px; 
-}
-
-/* ==== BUTTONS ==== */
+/* עיצוב כפתורים כללי (HOME, CONTACT) */
 .button {
     display: inline-block;
     padding: 10px 20px;
     font-family: var(--font-main);
     color: var(--color-text);
     background-color: transparent;
-    font-size: 2vw;
+    font-size: 2vw; /* רספונסיבי */
     cursor: pointer;
     border: none;
     transition: background-color 0.3s ease;
+    text-decoration: none;
     
-    /* שינוי: הסרנו את ה-absolute/top/left כדי שלא יעלו אחד על השני */
-    position: relative; 
+    /* איפוס מיקומים אבסולוטיים ישנים */
+    position: relative;
+    top: auto;
+    left: auto;
     margin: 0;
 }
 
@@ -118,48 +94,95 @@ body {
     background-color: var(--color-hover);
 }
 
-/* ==== MUSIC + TV BUTTONS (ICONS ONLY) ==== */
-.music-button,
-.tv-button {
-    background: none;
-    border: none;
-    padding: 0;
-    width: var(--btn-size);
-    height: var(--btn-size);
+/* =========================================
+   4. CONTROL PANEL (TOP RIGHT) - TV & MUSIC
+   ========================================= */
+.top-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2000;
+    
+    /* סידור אנכי בטור */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px; /* רווח אחיד בין הכפתורים */
+}
+
+/* תצוגת מסך ה-TV */
+#channel-display {
+    width: 100px; /* רוחב קבוע */
+    box-sizing: border-box;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #00ff00 !important;
+    text-shadow: 0px 0px 5px rgba(0, 255, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 5px 0;
+    border: 1px solid #00ff00;
+    border-radius: 4px;
+    pointer-events: none;
+    letter-spacing: 2px;
+}
+
+/* כפתורי רטרו (CH, PLAY, STOP) - עיצוב אחיד */
+.retro-tv-btn {
+    width: 100px; /* רוחב זהה לכולם */
+    height: 40px;
+    
+    background-color: #2b2b2b !important;
+    color: #aaaaaa !important;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 0.9rem;
+    
     display: flex;
     justify-content: center;
     align-items: center;
+    
     cursor: pointer;
-    box-sizing: border-box;
+    text-transform: uppercase;
+    border: none;
+    white-space: nowrap;
+    
+    /* אפקט תלת מימד */
+    border-top: 2px solid #555 !important;
+    border-left: 2px solid #555 !important;
+    border-bottom: 4px solid #000 !important;
+    border-right: 4px solid #000 !important;
+    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
     transition: all 0.1s ease;
 }
 
-.music-button:active,
-.tv-button:active {
-    transform: scale(0.85);
-    background-color: rgba(255, 255, 255, 0.1);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+.retro-tv-btn:active {
+    background-color: #222 !important;
+    transform: translate(2px, 2px);
+    border-top: 4px solid #000 !important;
+    border-left: 4px solid #000 !important;
+    border-bottom: 2px solid #555 !important;
+    border-right: 2px solid #555 !important;
+    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.8);
+    color: #00ff00 !important;
 }
 
-.music-button:hover,
-.tv-button:hover {
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 6px;
+.retro-tv-btn:hover {
+    background-color: #3a3a3a !important;
+    color: white !important;
 }
 
-/* ==== ICON IMAGES ==== */
-.music-button img,
-.tv-button img {
-    width: 100%;
-    height: 100%;
-    max-width: clamp(22px, 5vw, 32px);
-    max-height: clamp(22px, 5vw, 32px);
-    object-fit: contain;
-    aspect-ratio: 1 / 1;
-    image-rendering: pixelated;
+/* ביטול השפעות של קונטיינרים ישנים אם נשארו ב-HTML */
+.music-controls-group,
+.channel-controls-container {
+    display: contents;
 }
 
-/* ==== TEXT ==== */
+/* =========================================
+   5. TEXT & LINKS STYLING
+   ========================================= */
 h1 {
     font-size: clamp(1.2rem, 4vw, 2.5rem);
     color: var(--color-text);
@@ -204,7 +227,9 @@ h1 {
     padding: 5px 10px;
 }
 
-/* ==== BACKGROUND MEDIA ==== */
+/* =========================================
+   6. BACKGROUND MEDIA & EFFECTS
+   ========================================= */
 #background-video,
 #background-gif {
     position: fixed;
@@ -222,161 +247,6 @@ h1 {
     display: none;
 }
 
-/* ==== HOVER IMAGES ==== */
-.image1, .image2 {
-    display: none;
-    position: absolute;
-    z-index: 10;
-    width: 190px;
-    height: auto;
-}
-
-.image1 {
-    top: 40%;
-    left: 55%;
-}
-
-.image2 {
-    top: 70%;
-    left: 45%;
-}
-
-.hover-container:hover .image1,
-.hover-container:hover .image2 {
-    display: block;
-}
-
-/* ==== EFFECTS ==== */
-.ripple-effect:hover {
-    animation: colorPulse 2s infinite ease-in-out;
-}
-
-@keyframes colorPulse {
-    0%   { color: var(--color-accent); text-shadow: 0 0 5px var(--color-accent); }
-    50%  { color: #fff; text-shadow: 0 0 15px var(--color-accent); }
-    100% { color: var(--color-accent); text-shadow: 0 0 5px var(--color-accent); }
-}
-
-/* ==== RESPONSIVE ==== */
-
-/* טאבלט / iPad */
-@media (max-width: 1024px) {
-    .centered-container {
-        margin-top: 40vh;
-        padding: 0 20px;
-    }
-
-    .image1, .image2 {
-        width: 150px;
-    }
-
-    .button {
-        font-size: clamp(1rem, 3vw, 1.5rem);
-    }
-}
-
-/* טלפון גדול / טאבלט קטן */
-@media (max-width: 768px) {
-    .centered-container {
-        margin-top: 30vh;
-        padding: 0 15px;
-    }
-    
-    /* עדכון למיקומים במובייל */
-    .nav-container {
-        top: 10px;
-        left: 10px;
-        gap: 10px;
-    }
-
-    .top-controls {
-        top: 10px;
-        right: 10px;
-        gap: 10px;
-    }
-
-    .button {
-        font-size: clamp(0.9rem, 4vw, 1.3rem);
-        padding: 8px 16px;
-    }
-
-    .header h1 {
-        font-size: clamp(1rem, 5vw, 1.5rem);
-    }
-
-    .image1, .image2 {
-        width: 100px;
-    }
-
-    .image1 {
-        top: 30%;
-        left: 60%;
-    }
-
-    .image2 {
-        top: 60%;
-        left: 50%;
-    }
-
-    .music-button,
-    .tv-button {
-        width: 40px;
-        height: 40px;
-    }
-
-    .music-button img,
-    .tv-button img {
-        max-width: 28px;
-        max-height: 28px;
-    }
-}
-
-/* טלפון קטן */
-@media (max-width: 480px) {
-    .centered-container {
-        margin-top: 25vh;
-        padding: 0 10px;
-    }
-
-    h1 {
-        font-size: clamp(0.9rem, 5vw, 1.3rem);
-        line-height: 1.8;
-    }
-
-    .button {
-        font-size: clamp(0.8rem, 4.5vw, 1.1rem);
-        padding: 6px 12px;
-    }
-
-    .image1, .image2 {
-        width: 80px;
-    }
-
-    .music-button,
-    .tv-button {
-        width: 35px;
-        height: 35px;
-    }
-
-    .music-button img,
-    .tv-button img {
-        max-width: 24px;
-        max-height: 24px;
-    }
-}
-
-/* מסתיר hover effects במכשירי מגע */
-@media (hover: none) and (pointer: coarse) {
-    .hover-container:hover .image1,
-    .hover-container:hover .image2 {
-        display: none;
-    }
-
-    .ripple-effect:hover {
-        animation: none;
-    }
-}
-
 #channel-switch-effect {
     position: fixed;
     top: 0;
@@ -390,9 +260,38 @@ h1 {
     pointer-events: none;
     transition: opacity 0.3s ease-in-out;
 }
-/* ==== NEW HOME PAGE STYLES ==== */
 
-/* מסך הבית נקי וממורכז */
+/* HOVER IMAGES */
+.image1, .image2 {
+    display: none;
+    position: absolute;
+    z-index: 10;
+    width: 190px;
+    height: auto;
+}
+
+.image1 { top: 40%; left: 55%; }
+.image2 { top: 70%; left: 45%; }
+
+.hover-container:hover .image1,
+.hover-container:hover .image2 {
+    display: block;
+}
+
+/* RIPPLE EFFECT */
+.ripple-effect:hover {
+    animation: colorPulse 2s infinite ease-in-out;
+}
+
+@keyframes colorPulse {
+    0%   { color: var(--color-accent); text-shadow: 0 0 5px var(--color-accent); }
+    50%  { color: #fff; text-shadow: 0 0 15px var(--color-accent); }
+    100% { color: var(--color-accent); text-shadow: 0 0 5px var(--color-accent); }
+}
+
+/* =========================================
+   7. HOME PAGE STYLES (NEW)
+   ========================================= */
 .home-container {
     display: flex;
     flex-direction: column;
@@ -400,32 +299,22 @@ h1 {
     align-items: center;
     height: 100vh;
     text-align: center;
-    
-    /* שינוי: רקע חצי שקוף במקום שחור מלא, כדי שיראו את הוידאו */
-    background-color: rgba(0, 0, 0, 0.4); 
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* אפקט מכונת כתיבה לטקסט */
 .typewriter h1 {
-    font-family: var(--font-main); 
+    font-family: var(--font-main);
     color: var(--color-text);
-    overflow: hidden; 
-    border-right: .15em solid var(--color-accent); 
-    white-space: nowrap; 
+    overflow: hidden;
+    border-right: .15em solid var(--color-accent);
+    white-space: nowrap;
     margin: 0 auto;
     letter-spacing: .10em;
-    
-    /* התאמות גודל לפונט הפיקסלי */
-    font-size: clamp(1rem, 2.5vw, 2rem); 
+    font-size: clamp(1rem, 2.5vw, 2rem);
     width: 0;
-    
-    /* עדכנתי את מספר הצעדים (steps) ל-50 כדי שיתאים לאורך הטקסט החדש */
-    animation: 
-        typing 3.5s steps(50, end) forwards,
-        blink-caret .75s step-end infinite;
+    animation: typing 3.5s steps(50, end) forwards, blink-caret .75s step-end infinite;
 }
 
-/* שאר האנימציות נשארות אותו דבר */
 @keyframes typing {
     from { width: 0 }
     to { width: 100% }
@@ -436,21 +325,19 @@ h1 {
     50% { border-color: var(--color-accent) }
 }
 
-/* אזור הכפתורים */
 .home-nav {
     margin-top: 50px;
     display: flex;
     gap: 30px;
-    opacity: 0; /* מתחיל נסתר */
+    opacity: 0;
     animation: fadeIn 2s ease forwards;
-    animation-delay: 3.5s; /* מופיע רק אחרי שהכתיבה מסתיימת */
+    animation-delay: 3.5s;
 }
 
 @keyframes fadeIn {
     to { opacity: 1; }
 }
 
-/* עיצוב כפתורים ראשיים */
 .main-btn {
     border: 2px solid white;
     padding: 15px 30px;
@@ -469,8 +356,9 @@ h1 {
     box-shadow: 0 0 15px rgba(255,255,255,0.8);
 }
 
-/* ==== PROJECTS PAGE STYLES ==== */
-
+/* =========================================
+   8. PROJECTS PAGE STYLES
+   ========================================= */
 .projects-container {
     padding: 80px 20px;
     max-width: 1200px;
@@ -486,7 +374,6 @@ h1 {
     text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
-/* הגריד של הכרטיסיות */
 .tech-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -494,7 +381,6 @@ h1 {
     justify-content: center;
 }
 
-/* עיצוב הכרטיס עצמו */
 .tech-card {
     background: #000;
     border: 2px solid white;
@@ -509,7 +395,6 @@ h1 {
     box-shadow: 12px 12px 0px rgba(255, 255, 255, 0.4);
 }
 
-/* כותרת "קובץ" כמו בטרמינל */
 .card-header {
     background: white;
     color: black;
@@ -532,18 +417,17 @@ h1 {
     box-shadow: 0 0 5px #ff0000;
 }
 
-/* אזור התמונה - כאן הקסם שמתקן את הגודל */
 .card-visual {
-    height: 200px; /* גובה קבוע */
+    height: 200px;
     background: #222;
-    overflow: hidden; /* חותך את מה שחורג */
+    overflow: hidden;
     border-bottom: 2px solid white;
 }
 
 .project-gif {
-    width: 100%; /* רוחב מלא של הכרטיס */
-    height: 100%; /* גובה מלא של האזור */
-    object-fit: cover; /* חותך את התמונה יפה שלא תימעך */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     filter: grayscale(100%);
     transition: filter 0.3s;
 }
@@ -552,7 +436,6 @@ h1 {
     filter: grayscale(0%);
 }
 
-/* תוכן טקסטואלי */
 .card-content {
     padding: 20px;
     flex-grow: 1;
@@ -579,7 +462,6 @@ h1 {
     direction: rtl;
 }
 
-/* תגיות טכנולוגיה */
 .tech-tags {
     display: flex;
     flex-wrap: wrap;
@@ -597,157 +479,47 @@ h1 {
     text-transform: uppercase;
 }
 
-/* ==== TV CHANNEL CONTROLS (FIXED RETRO LOOK) ==== */
-
-/* שינוי: הורדנו את ה-Fixed כי עכשיו זה בתוך הקונטיינר הראשי */
-.channel-controls-container {
-    position: relative; /* זורם בתוך הקונטיינר */
-    display: flex;
-    flex-direction: column; 
-    align-items: center;
-    gap: 10px;
-    /* הוסר ה-z-index והמיקומים, ההורה מטפל בזה */
+/* =========================================
+   9. RESPONSIVE
+   ========================================= */
+@media (max-width: 1024px) {
+    .centered-container {
+        margin-top: 40vh;
+        padding: 0 20px;
+    }
+    .image1, .image2 { width: 150px; }
+    .button { font-size: clamp(1rem, 3vw, 1.5rem); }
 }
 
-/* 1. עיצוב מספר הערוץ - שייראה כמו תצוגת OSD דיגיטלית */
-#channel-display {
-    font-family: 'Courier New', monospace; /* פונט מונוספייס */
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #00ff00 !important; /* ירוק ניאון חזק */
-    text-shadow: 0px 0px 5px rgba(0, 255, 0, 0.8); /* הילה זוהרת */
-    background-color: rgba(0, 0, 0, 0.7); /* רקע שחור חצי שקוף לקריאות */
-    padding: 5px 12px;
-    border: 1px solid #00ff00; /* מסגרת דקה ירוקה */
-    border-radius: 4px;
-    pointer-events: none;
-    letter-spacing: 2px;
-}
-
-/* 2. עיצוב הכפתור - פלסטיק שחור בולט */
-#switch-channel-btn {
-    background-color: #2b2b2b !important; /* אפור כהה מאוד */
-    color: #aaaaaa !important; /* טקסט אפור בהיר */
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: 0.9rem;
-    padding: 10px 15px;
-    cursor: pointer;
-    text-transform: uppercase;
+@media (max-width: 768px) {
+    .centered-container {
+        margin-top: 30vh;
+        padding: 0 15px;
+    }
     
-    /* יצירת אפקט תלת-ממד של כפתור פיזי */
-    border-top: 2px solid #555 !important;   /* אור מלמעלה */
-    border-left: 2px solid #555 !important;  /* אור משמאל */
-    border-bottom: 4px solid #000 !important; /* צל כבד מלמטה */
-    border-right: 4px solid #000 !important;  /* צל כבד מימין */
-    border-radius: 4px;
+    .nav-container { top: 10px; left: 10px; gap: 10px; }
+    .top-controls { top: 10px; right: 10px; gap: 10px; }
     
-    box-shadow: 0 4px 6px rgba(0,0,0,0.5); /* צל חיצוני */
-    transition: all 0.1s ease;
+    .button {
+        font-size: clamp(0.9rem, 4vw, 1.3rem);
+        padding: 8px 16px;
+    }
+
+    .header h1 { font-size: clamp(1rem, 5vw, 1.5rem); }
+    .image1, .image2 { width: 100px; }
+    .image1 { top: 30%; left: 60%; }
+    .image2 { top: 60%; left: 50%; }
 }
 
-/* מצב לחיצה - הכפתור שוקע */
-#switch-channel-btn:active {
-    background-color: #222 !important;
-    transform: translate(2px, 2px); /* מזיז את הכפתור פיזית */
-    
-    /* הופך את הגבולות כדי לתת תחושת שקיעה */
-    border-top: 4px solid #000 !important;
-    border-left: 4px solid #000 !important;
-    border-bottom: 2px solid #555 !important;
-    border-right: 2px solid #555 !important;
-    
-    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.8); /* צל פנימי */
-    color: #00ff00 !important; /* הטקסט נדלק בירוק בלחיצה */
+@media (max-width: 480px) {
+    .centered-container { margin-top: 25vh; padding: 0 10px; }
+    h1 { font-size: clamp(0.9rem, 5vw, 1.3rem); line-height: 1.8; }
+    .button { font-size: clamp(0.8rem, 4.5vw, 1.1rem); padding: 6px 12px; }
+    .image1, .image2 { width: 80px; }
 }
 
-/* מצב מעבר עכבר */
-#switch-channel-btn:hover {
-    background-color: #3a3a3a !important;
-    color: white !important;
-}
-
-/* ==== מחלקת עיצוב לכפתור רטרו (להוסיף לכל כפתור שרוצים) ==== */
-
-.retro-tv-btn {
-    background-color: #2b2b2b !important; /* אפור כהה מאוד */
-    color: #aaaaaa !important; /* טקסט אפור בהיר */
-    font-family: sans-serif;
-    font-weight: bold;
-    font-size: 0.9rem;
-    padding: 10px 15px;
-    cursor: pointer;
-    text-transform: uppercase;
-    border: none; /* איפוס גבולות קודמים אם יש */
-    
-    /* יצירת אפקט תלת-ממד של כפתור פיזי */
-    border-top: 2px solid #555 !important;   /* אור מלמעלה */
-    border-left: 2px solid #555 !important;  /* אור משמאל */
-    border-bottom: 4px solid #000 !important; /* צל כבד מלמטה */
-    border-right: 4px solid #000 !important;  /* צל כבד מימין */
-    border-radius: 4px;
-    
-    box-shadow: 0 4px 6px rgba(0,0,0,0.5); /* צל חיצוני */
-    transition: all 0.1s ease;
-}
-
-/* מצב לחיצה */
-.retro-tv-btn:active {
-    background-color: #222 !important;
-    transform: translate(2px, 2px); /* מזיז את הכפתור פיזית */
-    
-    /* הופך את הגבולות כדי לתת תחושת שקיעה */
-    border-top: 4px solid #000 !important;
-    border-left: 4px solid #000 !important;
-    border-bottom: 2px solid #555 !important;
-    border-right: 2px solid #555 !important;
-    
-    box-shadow: inset 2px 2px 5px rgba(0,0,0,0.8); /* צל פנימי */
-    color: #00ff00 !important; /* הטקסט נדלק בירוק בלחיצה */
-}
-
-/* מצב מעבר עכבר */
-.retro-tv-btn:hover {
-    background-color: #3a3a3a !important;
-    color: white !important;
-}
-
-
-/* ========================================= */
-/* ====   תוספת לסידור כפתורים (חדש)    ==== */
-/* ========================================= */
-
-/* 1. הקונטיינר הראשי בצד ימין למעלה */
-.main-right-controls {
-    position: fixed;
-    top: 20px;
-    right: 20px;
-    z-index: 2000;
-    display: flex;
-    flex-direction: column; /* מסדר את ה-CH מעל הנגן */
-    align-items: center;    /* ממרכז הכל */
-    gap: 15px;              /* רווח בין החלק של הטלוויזיה לחלק של המוזיקה */
-}
-
-/* 2. השורה של כפתורי המוזיקה (Play ליד Stop) */
-.music-row {
-    display: flex;
-    gap: 10px;
-}
-
-/* 3. מחלקה לכפיית גודל אחיד לכל שלושת הכפתורים */
-.exact-size {
-    width: 90px !important;  /* רוחב קבוע לכולם */
-    height: 45px !important; /* גובה קבוע לכולם */
-    padding: 0 !important;   /* ביטול ריפוד כדי שהטקסט יתמרכז */
-    display: flex !important;
-    justify-content: center;
-    align-items: center;
-    font-size: 0.8rem !important;
-    margin: 0;
-}
-
-/* תיקון קטן לתצוגת ה-TV שתהיה יפה */
-#channel-display {
-    margin-bottom: 5px; 
+@media (hover: none) and (pointer: coarse) {
+    .hover-container:hover .image1,
+    .hover-container:hover .image2 { display: none; }
+    .ripple-effect:hover { animation: none; }
 }
