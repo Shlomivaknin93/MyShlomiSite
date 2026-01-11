@@ -18,9 +18,9 @@
     <img id="background-gif" src="static/images/static.gif" alt="Static Noise" />
 
     <div class="channel-controls-container">
-        <div id="channel-display" class="channel-osd">CH 01</div>
+        <div id="channel-display">CH 01</div> 
         
-        <button id="switch-channel-btn" class="retro-channel-btn">
+        <button id="switch-channel-btn" class="retro-tv-btn">
             CH +
         </button>
     </div>
@@ -63,35 +63,37 @@
 
         let isVideoMode = true; // מתחילים בוידאו
 
-        switchBtn.addEventListener('click', function() {
-            // 1. הפעלת אפקט רעש סטטי קצר (כמו מעבר ערוץ)
-            switchEffect.style.opacity = '1';
-            
-            // שינוי מספר ערוץ רנדומלי
-            const randomChannel = Math.floor(Math.random() * 99) + 1;
-            channelDisplay.innerText = 'CH ' + randomChannel.toString().padStart(2, '0');
-
-            setTimeout(() => {
-                // 2. החלפת המקור אחרי 300 מילישניות
-                if (isVideoMode) {
-                    // מעבר לרעש סטטי קבוע
-                    video.style.display = 'none';
-                    staticGif.style.display = 'block';
-                    // הסתרת התוכן (אופציונלי - אם רוצים שיראו רק שלג)
-                    // document.querySelector('.home-container').style.opacity = '0.5'; 
-                } else {
-                    // חזרה לוידאו
-                    video.style.display = 'block';
-                    staticGif.style.display = 'none';
+        if (switchBtn) {
+            switchBtn.addEventListener('click', function() {
+                // 1. הפעלת אפקט רעש סטטי קצר (כמו מעבר ערוץ)
+                switchEffect.style.opacity = '1';
+                
+                // שינוי מספר ערוץ רנדומלי
+                const randomChannel = Math.floor(Math.random() * 99) + 1;
+                if (channelDisplay) {
+                    channelDisplay.innerText = 'CH ' + randomChannel.toString().padStart(2, '0');
                 }
-                
-                isVideoMode = !isVideoMode; // היפוך מצב
-                
-                // 3. כיבוי אפקט המעבר
-                switchEffect.style.opacity = '0';
 
-            }, 300);
-        });
+                setTimeout(() => {
+                    // 2. החלפת המקור אחרי 300 מילישניות
+                    if (isVideoMode) {
+                        // מעבר לרעש סטטי קבוע
+                        if(video) video.style.display = 'none';
+                        if(staticGif) staticGif.style.display = 'block';
+                    } else {
+                        // חזרה לוידאו
+                        if(video) video.style.display = 'block';
+                        if(staticGif) staticGif.style.display = 'none';
+                    }
+                    
+                    isVideoMode = !isVideoMode; // היפוך מצב
+                    
+                    // 3. כיבוי אפקט המעבר
+                    switchEffect.style.opacity = '0';
+
+                }, 300);
+            });
+        }
     </script>
 </body>
 </html>
