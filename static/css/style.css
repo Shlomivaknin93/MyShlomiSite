@@ -101,13 +101,14 @@ body {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 2000;
+    z-index: 10001;
     
     /* סידור אנכי בטור */
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 15px; /* רווח אחיד בין הכפתורים */
+    pointer-events: auto;
 }
 
 /* תצוגת מסך ה-TV */
@@ -300,6 +301,11 @@ h1 {
     height: 100vh;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.4);
+    pointer-events: none; /* לא לחסום את כפתורי ה-TV */
+}
+
+.home-container a {
+    pointer-events: auto;
 }
 
 .typewriter h1 {
