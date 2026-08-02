@@ -61,38 +61,41 @@
         const staticGif = document.getElementById('background-gif');
         const switchEffect = document.getElementById('channel-switch-effect');
 
-        let isVideoMode = true; // מתחילים בוידאו
-        let currentChannel = 1; // שינוי 2: משתנה שמתחיל ב-1
+        // ערוץ 1 = moonwalk, ערוץ 2 = video1
+        const channelVideos = [
+            'static/videos/moonwalk.mp4',
+            'static/videos/video1.mp4'
+        ];
+        let currentChannel = 1;
+
+        function playChannel(channelNumber) {
+            const src = channelVideos[channelNumber - 1];
+            if (!video || !src) return;
+
+            if (staticGif) staticGif.style.display = 'none';
+            video.style.display = 'block';
+
+            const source = video.querySelector('source');
+            if (source) source.src = src;
+            video.src = src;
+            video.load();
+            video.play().catch(() => {});
+        }
 
         if (switchBtn) {
             switchBtn.addEventListener('click', function() {
-                // 1. הפעלת אפקט רעש סטטי
                 switchEffect.style.opacity = '1';
-                
-                // שינוי 2: קידום הערוץ בצורה סדרתית (לא רנדומלית)
+
                 currentChannel++;
-                if (currentChannel > 99) currentChannel = 1; // חזרה ל-1 אחרי 99
+                if (currentChannel > channelVideos.length) currentChannel = 1;
 
                 if (channelDisplay) {
-                    // עדכון הטקסט (CH 02, CH 03...)
                     channelDisplay.innerText = 'CH ' + currentChannel.toString().padStart(2, '0');
                 }
 
                 setTimeout(() => {
-                    // 2. החלפת המקור (וידאו <-> GIF)
-                    if (isVideoMode) {
-                        if(video) video.style.display = 'none';
-                        if(staticGif) staticGif.style.display = 'block';
-                    } else {
-                        if(video) video.style.display = 'block';
-                        if(staticGif) staticGif.style.display = 'none';
-                    }
-                    
-                    isVideoMode = !isVideoMode;
-                    
-                    // 3. כיבוי אפקט המעבר
+                    playChannel(currentChannel);
                     switchEffect.style.opacity = '0';
-
                 }, 300);
             });
         }

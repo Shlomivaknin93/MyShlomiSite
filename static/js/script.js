@@ -12,47 +12,48 @@ document.addEventListener('DOMContentLoaded', function () {
     // האלמנט החדש שמציג את המספרים
     const channelDisplay = document.getElementById('channel-display');
 
-    // --- משתנים למצב ---
-    let showVideo = true;
-    let currentChannel = 3; // מתחילים מערוץ 3
+    // ערוץ 1 = moonwalk, ערוץ 2 = video1
+    const channelVideos = [
+        'static/videos/moonwalk.mp4',
+        'static/videos/video1.mp4'
+    ];
+    let currentChannel = 1;
 
-    // הגדרה ראשונית: מוודא שהמסך מציג CH 03 ישר בהתחלה
     if (channelDisplay) {
         channelDisplay.textContent = 'CH ' + currentChannel.toString().padStart(2, '0');
     }
 
-    // --- פונקציית החלפת הערוץ ---
+    function playChannel(channelNumber) {
+        const src = channelVideos[channelNumber - 1];
+        if (!video || !src) return;
+
+        if (gif) gif.style.display = 'none';
+        video.style.display = 'block';
+
+        const source = video.querySelector('source');
+        if (source) source.src = src;
+        video.src = src;
+        video.load();
+        video.play().catch(function () {});
+    }
+
     function switchBackground() {
-        
-        // 1. הצג את אפקט ההפרעה (שלג)
         if (channelEffect) {
             channelEffect.style.opacity = '1';
         }
 
-        // 2. אחרי 300 מילישניות - בצע את ההחלפה
+        currentChannel++;
+        if (currentChannel > channelVideos.length) currentChannel = 1;
+
+        if (channelDisplay) {
+            channelDisplay.textContent = 'CH ' + currentChannel.toString().padStart(2, '0');
+        }
+
         setTimeout(() => {
-            
-            // א. החלף בין וידאו ל-GIF
-            showVideo = !showVideo;
-            if (video) video.style.display = showVideo ? 'block' : 'none';
-            if (gif) gif.style.display = showVideo ? 'none' : 'block';
-
-            // ב. חשב את הערוץ הבא
-            currentChannel++;
-            if (currentChannel > 99) currentChannel = 1; // אם הגענו ל-99 נחזור ל-1
-
-            // ג. עדכן את הטקסט במסך (לדוגמה: CH 04)
-            if (channelDisplay) {
-                // padStart(2, '0') דואג שיהיה תמיד 0 לפני מספר יחיד
-                const formattedNumber = currentChannel.toString().padStart(2, '0');
-                channelDisplay.textContent = `CH ${formattedNumber}`;
-            }
-
-            // ד. הסתר את אפקט ההפרעה
+            playChannel(currentChannel);
             if (channelEffect) {
                 channelEffect.style.opacity = '0';
             }
-
         }, 300);
     }
 
