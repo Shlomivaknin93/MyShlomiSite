@@ -17,6 +17,10 @@
 
     <img id="background-gif" src="static/images/static.gif" alt="Static Noise" />
 
+    <audio id="audio-player" autoplay loop>
+        <source src="static/music/Lucy_in_Disguise-1987.mp3" type="audio/mpeg">
+    </audio>
+
     <div class="top-controls">
         <div id="channel-display">CH 01</div> 
         
@@ -38,6 +42,7 @@
 
     </div>
 
+    <script src="static/js/script.js"></script>
     <script>
         // --- לוגיקת מעבר עמודים ---
         document.querySelectorAll('a').forEach(link => {
@@ -53,52 +58,6 @@
                 }
             });
         });
-
-        // --- לוגיקת החלפת ערוצים (TV Logic) ---
-        const switchBtn = document.getElementById('switch-channel-btn');
-        const channelDisplay = document.getElementById('channel-display');
-        const video = document.getElementById('background-video');
-        const staticGif = document.getElementById('background-gif');
-        const switchEffect = document.getElementById('channel-switch-effect');
-
-        // ערוץ 1 = moonwalk, ערוץ 2 = video1
-        const channelVideos = [
-            'static/videos/moonwalk.mp4',
-            'static/videos/video1.mp4'
-        ];
-        let currentChannel = 1;
-
-        function playChannel(channelNumber) {
-            const src = channelVideos[channelNumber - 1];
-            if (!video || !src) return;
-
-            if (staticGif) staticGif.style.display = 'none';
-            video.style.display = 'block';
-
-            const source = video.querySelector('source');
-            if (source) source.src = src;
-            video.src = src;
-            video.load();
-            video.play().catch(() => {});
-        }
-
-        if (switchBtn) {
-            switchBtn.addEventListener('click', function() {
-                switchEffect.style.opacity = '1';
-
-                currentChannel++;
-                if (currentChannel > channelVideos.length) currentChannel = 1;
-
-                if (channelDisplay) {
-                    channelDisplay.innerText = 'CH ' + currentChannel.toString().padStart(2, '0');
-                }
-
-                setTimeout(() => {
-                    playChannel(currentChannel);
-                    switchEffect.style.opacity = '0';
-                }, 300);
-            });
-        }
     </script>
 </body>
 </html>
