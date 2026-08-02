@@ -9,11 +9,12 @@
         const channelEffect = document.getElementById('channel-switch-effect');
         const channelDisplay = document.getElementById('channel-display');
 
-        // ערוץ 1 = moonwalk + מוזיקה, ערוצים 2–3 = סרטים + סאונד הסרט
+        // ערוץ 1 = moonwalk + מוזיקה, ערוצים 2–4 = סרטים + סאונד הסרט
         const channelVideos = [
             'static/videos/moonwalk.mp4',
             'static/videos/video1.mp4',
-            'static/videos/video2.mp4'
+            'static/videos/video2.mp4',
+            'static/videos/video4.mp4'
         ];
         let currentChannel = 1;
         let isSwitching = false;
