@@ -566,107 +566,103 @@ h1 {
     letter-spacing: 0.06em;
 }
 
-.habitat-page .habitat-wrap {
+.habitat-page {
+    overflow-x: hidden;
+}
+
+.luna-nav {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 10001;
+}
+
+.luna-app {
     position: relative;
     z-index: 1;
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 90px 20px 80px;
+    padding: 70px 16px 40px;
+    direction: ltr;
+    text-align: left;
 }
 
-.habitat-hero {
-    text-align: center;
-    margin-bottom: 60px;
-    padding: 30px 20px;
-    border: 2px solid white;
-    background: rgba(0, 0, 0, 0.75);
-    box-shadow: 8px 8px 0 rgba(255, 255, 255, 0.15);
-}
-
-.habitat-signal {
-    font-family: 'Courier New', monospace;
-    color: #00ff00;
-    font-size: 0.85rem;
-    letter-spacing: 0.14em;
+.luna-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 16px;
+    flex-wrap: wrap;
     margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid #333;
+}
+
+.luna-logo {
+    margin: 0;
+    font-family: var(--font-main);
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: white;
+    letter-spacing: 0.08em;
+}
+
+.luna-sub {
+    display: block;
+    margin-top: 4px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: #888;
+    letter-spacing: 0.08em;
+}
+
+.luna-top-meta {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.85rem;
+    color: #ccc;
+}
+
+.luna-live {
     display: inline-flex;
     align-items: center;
     gap: 8px;
 }
 
-.habitat-brand {
-    font-family: var(--font-main);
-    font-size: clamp(2rem, 8vw, 4rem);
+.luna-live .is-degraded,
+#hab-status-label.is-degraded {
+    color: #ff6666;
+}
+
+.luna-crew {
+    border: 1px solid #444;
+    padding: 6px 10px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.luna-crew strong {
     color: white;
-    margin: 0 0 10px;
-    letter-spacing: 0.08em;
-    text-shadow: 0 0 18px rgba(255, 255, 255, 0.35);
-}
-
-.habitat-tagline {
-    font-family: 'Courier New', monospace;
-    color: var(--color-accent);
-    font-size: clamp(0.85rem, 2vw, 1.1rem);
-    margin: 0 0 20px;
-}
-
-.habitat-mission {
-    font-family: Arial, sans-serif;
-    color: #ccc;
-    line-height: 1.7;
-    max-width: 720px;
-    margin: 0 auto 24px;
-    font-size: 1rem;
-}
-
-.habitat-stack {
-    justify-content: center;
-}
-
-.habitat-section {
-    margin-bottom: 70px;
-}
-
-.habitat-section .tech-card .card-content {
-    padding-top: 20px;
-}
-
-.habitat-section code {
-    font-family: 'Courier New', monospace;
-    color: var(--color-accent);
-    font-size: 0.9em;
-}
-
-.habitat-demo-note {
-    text-align: center;
-    margin-top: -30px;
-}
-
-.mission-board {
-    border: 2px solid white;
-    background: rgba(0, 0, 0, 0.82);
-    box-shadow: 8px 8px 0 rgba(255, 255, 255, 0.15);
-    padding: 20px;
 }
 
 .mission-stats {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
-    margin-bottom: 20px;
+    gap: 10px;
+    margin-bottom: 14px;
 }
 
 .mission-stat {
     border: 1px solid #444;
     padding: 12px;
     text-align: center;
-    background: #0a0a0a;
+    background: rgba(0, 0, 0, 0.85);
 }
 
 .stat-label {
     display: block;
     font-family: 'Courier New', monospace;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     color: #888;
     letter-spacing: 0.12em;
     margin-bottom: 6px;
@@ -674,7 +670,7 @@ h1 {
 
 .stat-value {
     font-family: 'Courier New', monospace;
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     color: #00ff00;
     text-shadow: 0 0 6px rgba(0, 255, 0, 0.5);
 }
@@ -684,69 +680,215 @@ h1 {
     text-shadow: 0 0 6px rgba(255, 0, 0, 0.6);
 }
 
-.mission-grid {
+.luna-main {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 14px;
+    min-height: 560px;
 }
 
-.mission-panel {
-    border: 1px solid white;
-    background: #000;
+.luna-panel {
+    border: 2px solid white;
+    background: rgba(0, 0, 0, 0.88);
     display: flex;
     flex-direction: column;
-    min-height: 360px;
+    min-height: 0;
 }
 
-.asset-list {
-    list-style: none;
-    margin: 0;
-    padding: 10px;
+.luna-side {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    min-height: 0;
+}
+
+.luna-spatial {
+    min-height: 560px;
+}
+
+.spatial-stage {
+    position: relative;
     flex: 1;
-    overflow-y: auto;
-}
-
-.asset-item {
+    margin: 12px;
     border: 1px solid #333;
-    padding: 10px 12px;
-    margin-bottom: 8px;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+        #070707;
+    background-size: 28px 28px, 28px 28px, auto;
+    overflow: hidden;
+}
+
+.spatial-corridor {
+    position: absolute;
+    left: 18%;
+    right: 18%;
+    top: 46%;
+    height: 18px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid #333;
+}
+
+.spatial-module {
+    position: absolute;
+    border: 1px solid #555;
+    background: rgba(20, 20, 20, 0.9);
+    padding: 10px;
+}
+
+.spatial-module[data-module="A"] {
+    left: 8%;
+    top: 12%;
+    width: 42%;
+    height: 34%;
+}
+
+.spatial-module[data-module="B"] {
+    right: 8%;
+    top: 12%;
+    width: 28%;
+    height: 34%;
+}
+
+.spatial-module[data-module="C"] {
+    left: 28%;
+    bottom: 10%;
+    width: 44%;
+    height: 28%;
+}
+
+.module-label {
+    display: block;
+    font-family: 'Courier New', monospace;
+    font-size: 0.65rem;
+    color: #777;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+}
+
+.spatial-node {
+    width: 42px;
+    height: 42px;
+    margin: 6px 8px 0 0;
+    border: 2px solid #666;
+    background: #222;
     cursor: pointer;
-    text-align: left;
-    direction: ltr;
-    transition: border-color 0.2s, background 0.2s;
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
 }
 
-.asset-item:hover,
-.asset-item.selected {
-    border-color: white;
-    background: #151515;
+.spatial-node.is-ok {
+    border-color: #10b981;
+    background: #064e3b;
+    box-shadow: 0 0 10px rgba(16, 185, 129, 0.45);
 }
 
-.asset-item.warning {
+.spatial-node.is-warning {
     border-color: #f59e0b;
+    background: #78350f;
+    box-shadow: 0 0 10px rgba(245, 158, 11, 0.45);
 }
 
-.asset-item.failed {
+.spatial-node.is-failed {
     border-color: #ef4444;
-    background: #1a0505;
+    background: #7f1d1d;
+    box-shadow: 0 0 14px rgba(239, 68, 68, 0.7);
+    animation: nodePulse 0.8s ease-in-out infinite;
 }
 
-.asset-id {
+.spatial-node.is-selected {
+    outline: 2px solid #3b82f6;
+    outline-offset: 3px;
+    transform: scale(1.08);
+}
+
+@keyframes nodePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+}
+
+.spatial-node.is-failed.is-selected {
+    animation: nodePulse 0.8s ease-in-out infinite;
+}
+
+.spatial-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 8px 12px 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    color: #999;
+}
+
+.spatial-legend .lg {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 6px;
+    border: 1px solid #666;
+    vertical-align: middle;
+}
+
+.lg-ok { background: #10b981; border-color: #10b981; }
+.lg-warn { background: #f59e0b; border-color: #f59e0b; }
+.lg-fail { background: #ef4444; border-color: #ef4444; }
+.lg-sel { background: #3b82f6; border-color: #3b82f6; }
+
+.luna-detail {
+    flex: 0 0 auto;
+}
+
+.detail-body {
+    padding: 14px 16px 8px;
+}
+
+.detail-id {
     font-family: 'Courier New', monospace;
     font-size: 0.75rem;
     color: var(--color-accent);
 }
 
-.asset-name {
+.detail-name {
+    margin: 4px 0 12px;
+    font-size: 1.15rem;
     color: white;
-    font-size: 0.95rem;
-    margin: 4px 0;
+    font-family: var(--font-main);
 }
 
-.asset-meta {
+.detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 12px;
+    margin: 0 0 12px;
+}
+
+.detail-grid dt {
+    font-family: 'Courier New', monospace;
+    font-size: 0.65rem;
+    color: #777;
+    letter-spacing: 0.06em;
+}
+
+.detail-grid dd {
+    margin: 2px 0 0;
+    color: #ddd;
+    font-size: 0.85rem;
+    font-family: Arial, sans-serif;
+}
+
+.detail-grid .st-operational { color: #10b981; }
+.detail-grid .st-warning { color: #f59e0b; }
+.detail-grid .st-failed { color: #ef4444; }
+
+.detail-req {
+    margin: 0;
+    padding: 8px 10px;
+    border: 1px solid #333;
+    background: #0c0c0c;
     font-family: 'Courier New', monospace;
     font-size: 0.7rem;
-    color: #888;
+    color: #aaa;
+    line-height: 1.4;
 }
 
 .mission-fail-btn {
@@ -757,13 +899,16 @@ h1 {
     border: 1px solid #662222;
 }
 
+.mission-chat {
+    flex: 1;
+    min-height: 260px;
+}
+
 .mission-chat .chat-log {
     flex: 1;
     overflow-y: auto;
     padding: 12px;
     background: #050505;
-    direction: ltr;
-    text-align: left;
 }
 
 .chat-bubble {
@@ -814,7 +959,6 @@ h1 {
     padding: 10px 12px;
     font-family: Arial, sans-serif;
     font-size: 0.85rem;
-    direction: rtl;
 }
 
 .chat-form input:focus {
@@ -829,23 +973,25 @@ h1 {
     height: 40px;
 }
 
-.habitat-trace-text {
-    text-align: center;
-    max-width: 700px;
-    margin: 0 auto;
-    direction: rtl;
+@media (max-width: 900px) {
+    .luna-main {
+        grid-template-columns: 1fr;
+    }
+    .luna-spatial {
+        min-height: 420px;
+    }
 }
 
 @media (max-width: 768px) {
     .mission-stats {
         grid-template-columns: repeat(2, 1fr);
     }
-    .mission-grid {
-        grid-template-columns: 1fr;
-    }
     .hub-btn {
         text-align: center;
         align-items: center;
+    }
+    .detail-grid {
+        grid-template-columns: 1fr;
     }
 }
 
