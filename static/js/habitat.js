@@ -1,54 +1,7 @@
 (function () {
-    const assets = [
-        {
-            id: 'ECLSS-PMP-001',
-            name: 'Primary O2 Circulation Pump',
-            system: 'SYS-ECLSS',
-            space: 'SPC-MOD-A',
-            mass_kg: 48.2,
-            power_draw_w: 620,
-            status: 'Operational',
-            failure_mode: 'Bearing seize / flow cutoff',
-            req: 'REQ-ECLSS-014 · Maintain O2 circulation ≥ 95%'
-        },
-        {
-            id: 'ECLSS-SCR-002',
-            name: 'CO2 Scrubber Module A',
-            system: 'SYS-ECLSS',
-            space: 'SPC-MOD-A',
-            mass_kg: 36.5,
-            power_draw_w: 410,
-            status: 'Operational',
-            failure_mode: 'Filter saturation',
-            req: 'REQ-ECLSS-022 · CO2 ≤ 0.5% within 4 min of primary loss'
-        },
-        {
-            id: 'PWR-BAT-001',
-            name: 'Main Power Distribution Unit',
-            system: 'SYS-POWER',
-            space: 'SPC-MOD-B',
-            mass_kg: 112.0,
-            power_draw_w: 0,
-            status: 'Operational',
-            failure_mode: 'Bus overload',
-            req: 'REQ-PWR-003 · Maintain distribution redundancy'
-        },
-        {
-            id: 'WTR-RCL-001',
-            name: 'Water Recovery System',
-            system: 'SYS-WATER',
-            space: 'SPC-MOD-C',
-            mass_kg: 89.4,
-            power_draw_w: 540,
-            status: 'Warning',
-            failure_mode: 'Membrane clog',
-            req: 'REQ-WTR-009 · Recovery rate ≥ 90%'
-        }
-    ];
+    let selectedZone = null;
 
-    let selectedId = 'ECLSS-PMP-001';
-
-    const detailEl = document.getElementById('asset-detail');
+    const detailEl = document.getElementById('zone-detail');
     const chatLog = document.getElementById('chat-log');
     const chatForm = document.getElementById('chat-form');
     const chatInput = document.getElementById('chat-input');
@@ -58,122 +11,99 @@
     const powerEl = document.getElementById('stat-power');
     const waterEl = document.getElementById('stat-water');
     const habStatus = document.getElementById('hab-status-label');
-    const nodes = Array.prototype.slice.call(document.querySelectorAll('.spatial-node'));
-
-    function getAsset(id) {
-        return assets.find(function (a) { return a.id === id; });
-    }
 
     function appendChat(sender, text) {
         const bubble = document.createElement('div');
         bubble.className = 'chat-bubble chat-' + sender;
-        bubble.innerHTML =
-            '<span class="chat-role">' + (sender === 'user' ? 'OPERATOR' : 'LUNA-AI') + '</span>' +
-            '<p></p>';
-        bubble.querySelector('p').textContent = text;
+        const role = document.createElement('span');
+        role.className = 'chat-role';
+        role.textContent = sender === 'user' ? 'OPERATOR' : 'LUNA-AI';
+        const p = document.createElement('p');
+        p.textContent = text;
+        bubble.appendChild(role);
+        bubble.appendChild(p);
         chatLog.appendChild(bubble);
         chatLog.scrollTop = chatLog.scrollHeight;
     }
 
-    function renderDetail() {
-        const asset = getAsset(selectedId);
-        if (!asset || !detailEl) return;
+    function renderZone(zone) {
+        selectedZone = zone;
+        if (!detailEl || !zone) return;
 
         detailEl.innerHTML =
-            '<div class="detail-id">' + asset.id + '</div>' +
-            '<h2 class="detail-name">' + asset.name + '</h2>' +
-            '<dl class="detail-grid">' +
-            '<div><dt>System</dt><dd>' + asset.system + '</dd></div>' +
-            '<div><dt>Space</dt><dd>' + asset.space + '</dd></div>' +
-            '<div><dt>Status</dt><dd class="st-' + asset.status.toLowerCase() + '">' + asset.status + '</dd></div>' +
-            '<div><dt>Power</dt><dd>' + asset.power_draw_w + ' W</dd></div>' +
-            '<div><dt>Mass</dt><dd>' + asset.mass_kg + ' kg</dd></div>' +
-            '<div><dt>Failure Mode</dt><dd>' + asset.failure_mode + '</dd></div>' +
-            '</dl>' +
-            '<p class="detail-req">' + asset.req + '</p>';
-    }
-
-    function renderNodes() {
-        nodes.forEach(function (node) {
-            const asset = getAsset(node.dataset.id);
-            if (!asset) return;
-            node.className = 'spatial-node';
-            if (asset.status === 'Failed') node.classList.add('is-failed');
-            else if (asset.status === 'Warning') node.classList.add('is-warning');
-            else node.classList.add('is-ok');
-            if (asset.id === selectedId) node.classList.add('is-selected');
-        });
-    }
-
-    function refresh() {
-        renderDetail();
-        renderNodes();
+            '<div class="detail-id">ZONE ' + zone.number + ' · ' + zone.module + '</div>' +
+            '<h2 class="detail-name">' + zone.title + '</h2>' +
+            '<p class="detail-summary">' + zone.summary + '</p>' +
+            '<p class="detail-req">' + zone.systems + '</p>';
     }
 
     function answerQuery(query) {
         const q = query.toLowerCase();
-        const failed = assets.filter(function (a) { return a.status === 'Failed'; });
 
+        if (q.indexOf('crew') !== -1 || q.indexOf('quarter') !== -1 || q.indexOf('sleep') !== -1) {
+            return 'Zone 1 · Crew Quarters in Module B: four private bunks for the 4-person crew with personal storage.';
+        }
+        if (q.indexOf('kitchen') !== -1 || q.indexOf('dining') !== -1 || q.indexOf('galley') !== -1) {
+            return 'Zone 2 · Kitchen / Dining in Module A is the communal hub for meals and crew briefings.';
+        }
+        if (q.indexOf('lab') !== -1 || q.indexOf('science') !== -1) {
+            return 'Zone 3 · Laboratory provides science workstations and sample handling under clean ECLSS airflow.';
+        }
         if (q.indexOf('eclss') !== -1 || q.indexOf('pump') !== -1 || q.indexOf('fail') !== -1 || q.indexOf('oxygen') !== -1 || q.indexOf('o2') !== -1) {
-            return 'ECLSS-PMP-001 failure drops Module A O2 circulation to 0%. ECLSS-SCR-002 enter fail-safe within 4 minutes per REQ-ECLSS-022. Dependent loop assets remain degraded until primary restored.';
+            return 'Critical ECLSS hardware sits in Zone 9 (Equipment Room). Failure of primary O2 circulation drops Module A oxygen loop; scrubber fail-safe engages under linked requirements.';
         }
-        if (q.indexOf('water') !== -1 || q.indexOf('maintenance') !== -1 || q.indexOf('warning') !== -1) {
-            return 'WTR-RCL-001 is Warning (membrane clog risk). Recovery currently ' + waterEl.textContent + '. Tracked under REQ-WTR-009.';
+        if (q.indexOf('airlock') !== -1 || q.indexOf('eva') !== -1) {
+            return 'Zone 7 Airlock + Zone 10 EVA Preparation handle pressure transition and suit checkout before surface ops.';
         }
-        if (q.indexOf('power') !== -1 || q.indexOf('battery') !== -1) {
-            return 'PWR-BAT-001 status: ' + getAsset('PWR-BAT-001').status + '. Reserve ' + powerEl.textContent + '. Requirement: REQ-PWR-003.';
+        if (q.indexOf('water') !== -1 || q.indexOf('hygiene') !== -1) {
+            return 'Zone 4 Hygiene interfaces with water recovery. Current recycle telemetry: ' + waterEl.textContent + '.';
         }
-        if (q.indexOf('crew') !== -1 || q.indexOf('status') !== -1 || q.indexOf('health') !== -1) {
-            return 'Crew 4/4. System health ' + healthEl.textContent + '/100. Failed assets: ' +
-                (failed.length ? failed.map(function (a) { return a.id; }).join(', ') : 'none') + '.';
+        if (q.indexOf('medical') !== -1) {
+            return 'Zone 6 Medical bay in Module B includes diagnostic bed and emergency kit storage.';
         }
-        return 'No matching telemetry or requirement found for that query. LUNA-AI will not invent values outside the habitat database.';
+        if (q.indexOf('volume') !== -1 || q.indexOf('size') !== -1 || q.indexOf('diameter') !== -1) {
+            return 'Habitable volume ~180 m³. Main module diameter 12 m, height 6 m, crew capacity 4.';
+        }
+        if (selectedZone) {
+            return 'Focused zone: ' + selectedZone.title + ' (' + selectedZone.module + '). ' + selectedZone.summary;
+        }
+        return 'No matching habitat zone or telemetry found. Ask about a zone name, ECLSS, airlock, or crew systems.';
     }
 
-    nodes.forEach(function (node) {
-        node.addEventListener('click', function () {
-            selectedId = node.dataset.id;
-            refresh();
-        });
+    window.addEventListener('luna-zone-select', function (e) {
+        renderZone(e.detail);
     });
 
     failBtn.addEventListener('click', function () {
-        const asset = getAsset(selectedId);
-        if (!asset || asset.status === 'Failed') return;
+        if (!selectedZone) {
+            appendChat('ai', 'Select a habitat zone marker before running a failure simulation.');
+            return;
+        }
 
-        asset.status = 'Failed';
-
-        const dependents = assets.filter(function (a) {
-            return a.system === asset.system && a.id !== asset.id;
-        });
-
-        const health = Math.max(38, parseInt(healthEl.textContent, 10) - 14);
+        const health = Math.max(38, parseInt(healthEl.textContent, 10) - 10);
         healthEl.textContent = String(health);
         healthEl.classList.add('stat-danger');
         habStatus.textContent = 'Hab Status: DEGRADED';
         habStatus.classList.add('is-degraded');
 
-        if (asset.system === 'SYS-ECLSS') {
-            o2El.textContent = '41.0%';
+        const title = selectedZone.title.toLowerCase();
+        if (title.indexOf('equipment') !== -1 || title.indexOf('lab') !== -1 || title.indexOf('kitchen') !== -1) {
+            o2El.textContent = '61.0%';
             o2El.classList.add('stat-danger');
         }
-        if (asset.system === 'SYS-POWER') {
-            powerEl.textContent = '61.2%';
-            powerEl.classList.add('stat-danger');
-        }
-        if (asset.system === 'SYS-WATER') {
-            waterEl.textContent = '54.0%';
+        if (title.indexOf('hygiene') !== -1 || title.indexOf('storage') !== -1) {
+            waterEl.textContent = '58.0%';
             waterEl.classList.add('stat-danger');
         }
-
-        refresh();
+        if (title.indexOf('exercise') !== -1 || title.indexOf('medical') !== -1) {
+            powerEl.textContent = '72.0%';
+            powerEl.classList.add('stat-danger');
+        }
 
         appendChat(
             'ai',
-            'CRITICAL_FAILURE on ' + asset.id + '. System ' + asset.system +
-            ' health degradation engaged. Impacted components: ' +
-            (dependents.length ? dependents.map(function (d) { return d.id; }).join(', ') : 'none') +
-            '. Linked requirement: ' + asset.req + '.'
+            'FAILURE CASCADE from Zone ' + selectedZone.number + ' (' + selectedZone.title + '). ' +
+            'Affected loops: ' + selectedZone.systems + '. Hab health now ' + health + '/100.'
         );
     });
 
@@ -185,9 +115,8 @@
         chatInput.value = '';
         setTimeout(function () {
             appendChat('ai', answerQuery(text));
-        }, 400);
+        }, 350);
     });
 
-    appendChat('ai', 'LUNA-AI connected to asset DB and MBSE requirements matrix. Hab-Module-Alpha telemetry streaming.');
-    refresh();
+    appendChat('ai', 'LUNA-AI online. 3D twin linked to Hab-Module-Alpha zones. Click a marker or ask about a zone.');
 })();

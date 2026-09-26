@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LUNA-TWIN</title>
     <link rel="stylesheet" href="static/css/style.css">
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
 </head>
 <body class="habitat-page">
 
@@ -55,40 +63,22 @@
 
             <section class="luna-panel luna-spatial">
                 <div class="card-header">
-                    <span class="status-dot"></span> SPATIAL_HABITAT_MODEL
+                    <span class="status-dot"></span> 3D_HABITAT_MODEL
+                    <span class="header-hint" id="habitat-3d-hint"></span>
                 </div>
-                <div class="spatial-stage" id="spatial-stage">
-                    <div class="spatial-module" data-module="A">
-                        <span class="module-label">MODULE A · ECLSS</span>
-                        <button type="button" class="spatial-node" data-id="ECLSS-PMP-001" title="ECLSS-PMP-001"></button>
-                        <button type="button" class="spatial-node" data-id="ECLSS-SCR-002" title="ECLSS-SCR-002"></button>
-                    </div>
-                    <div class="spatial-module" data-module="B">
-                        <span class="module-label">MODULE B · POWER</span>
-                        <button type="button" class="spatial-node" data-id="PWR-BAT-001" title="PWR-BAT-001"></button>
-                    </div>
-                    <div class="spatial-module" data-module="C">
-                        <span class="module-label">MODULE C · WATER</span>
-                        <button type="button" class="spatial-node" data-id="WTR-RCL-001" title="WTR-RCL-001"></button>
-                    </div>
-                    <div class="spatial-corridor"></div>
-                </div>
-                <div class="spatial-legend">
-                    <span><i class="lg lg-ok"></i> Operational</span>
-                    <span><i class="lg lg-warn"></i> Warning</span>
-                    <span><i class="lg lg-fail"></i> Failed</span>
-                    <span><i class="lg lg-sel"></i> Selected</span>
-                </div>
+                <div id="habitat-3d" class="habitat-3d"></div>
             </section>
 
             <aside class="luna-side">
                 <section class="luna-panel luna-detail">
                     <div class="card-header">
-                        <span class="status-dot"></span> SELECTED_ASSET
+                        <span class="status-dot"></span> ZONE_INFO
                     </div>
-                    <div class="detail-body" id="asset-detail"></div>
+                    <div class="detail-body" id="zone-detail">
+                        <p class="detail-placeholder">Click a marker on the habitat to inspect a zone.</p>
+                    </div>
                     <button type="button" class="retro-tv-btn mission-fail-btn" id="simulate-fail-btn">
-                        SIMULATE FAILURE
+                        SIMULATE ZONE FAILURE
                     </button>
                 </section>
 
@@ -111,11 +101,10 @@
 
         </div>
 
-        <ul class="asset-rail" id="asset-list" hidden></ul>
-
     </div>
 
     <script src="static/js/habitat.js"></script>
+    <script type="module" src="static/js/habitat-3d.js"></script>
     <script>
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', function (e) {

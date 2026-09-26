@@ -706,133 +706,56 @@ h1 {
     min-height: 560px;
 }
 
-.spatial-stage {
+.luna-spatial .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.header-hint {
+    margin-left: auto;
+    font-family: 'Courier New', monospace;
+    font-size: 0.65rem;
+    color: #888;
+    font-weight: normal;
+    letter-spacing: 0.04em;
+}
+
+.habitat-3d {
     position: relative;
     flex: 1;
-    margin: 12px;
-    border: 1px solid #333;
-    background:
-        linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-        #070707;
-    background-size: 28px 28px, 28px 28px, auto;
+    min-height: 480px;
+    margin: 0;
+    background: #050508;
     overflow: hidden;
 }
 
-.spatial-corridor {
-    position: absolute;
-    left: 18%;
-    right: 18%;
-    top: 46%;
-    height: 18px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid #333;
-}
-
-.spatial-module {
-    position: absolute;
-    border: 1px solid #555;
-    background: rgba(20, 20, 20, 0.9);
-    padding: 10px;
-}
-
-.spatial-module[data-module="A"] {
-    left: 8%;
-    top: 12%;
-    width: 42%;
-    height: 34%;
-}
-
-.spatial-module[data-module="B"] {
-    right: 8%;
-    top: 12%;
-    width: 28%;
-    height: 34%;
-}
-
-.spatial-module[data-module="C"] {
-    left: 28%;
-    bottom: 10%;
-    width: 44%;
-    height: 28%;
-}
-
-.module-label {
+.habitat-3d canvas {
     display: block;
+    width: 100% !important;
+    height: 100% !important;
+    cursor: grab;
+}
+
+.habitat-3d canvas:active {
+    cursor: grabbing;
+}
+
+.detail-placeholder {
+    color: #888;
     font-family: 'Courier New', monospace;
-    font-size: 0.65rem;
-    color: #777;
-    letter-spacing: 0.08em;
-    margin-bottom: 10px;
+    font-size: 0.8rem;
+    margin: 0;
 }
 
-.spatial-node {
-    width: 42px;
-    height: 42px;
-    margin: 6px 8px 0 0;
-    border: 2px solid #666;
-    background: #222;
-    cursor: pointer;
-    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+.detail-summary {
+    color: #ccc;
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0 0 12px;
 }
-
-.spatial-node.is-ok {
-    border-color: #10b981;
-    background: #064e3b;
-    box-shadow: 0 0 10px rgba(16, 185, 129, 0.45);
-}
-
-.spatial-node.is-warning {
-    border-color: #f59e0b;
-    background: #78350f;
-    box-shadow: 0 0 10px rgba(245, 158, 11, 0.45);
-}
-
-.spatial-node.is-failed {
-    border-color: #ef4444;
-    background: #7f1d1d;
-    box-shadow: 0 0 14px rgba(239, 68, 68, 0.7);
-    animation: nodePulse 0.8s ease-in-out infinite;
-}
-
-.spatial-node.is-selected {
-    outline: 2px solid #3b82f6;
-    outline-offset: 3px;
-    transform: scale(1.08);
-}
-
-@keyframes nodePulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.08); }
-}
-
-.spatial-node.is-failed.is-selected {
-    animation: nodePulse 0.8s ease-in-out infinite;
-}
-
-.spatial-legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 14px;
-    padding: 8px 12px 12px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.7rem;
-    color: #999;
-}
-
-.spatial-legend .lg {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    margin-right: 6px;
-    border: 1px solid #666;
-    vertical-align: middle;
-}
-
-.lg-ok { background: #10b981; border-color: #10b981; }
-.lg-warn { background: #f59e0b; border-color: #f59e0b; }
-.lg-fail { background: #ef4444; border-color: #ef4444; }
-.lg-sel { background: #3b82f6; border-color: #3b82f6; }
 
 .luna-detail {
     flex: 0 0 auto;
