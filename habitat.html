@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LUNA-TWIN · HABITAT</title>
+    <link rel="stylesheet" href="static/css/style.css">
+</head>
+<body class="habitat-page">
+
+    <div id="channel-switch-effect"></div>
+
+    <div class="nav-container">
+        <a href="index.html" class="button">HOME</a>
+        <a href="projects.html" class="button">PROJECTS</a>
+    </div>
+
+    <img id="background-gif" src="static/images/static.gif" alt="Static Noise" style="display: block;" />
+
+    <div class="habitat-wrap">
+
+        <header class="habitat-hero">
+            <div class="habitat-signal">
+                <span class="status-dot"></span>
+                SIGNAL LOCKED · CH HAB
+            </div>
+            <h1 class="habitat-brand">LUNA-TWIN</h1>
+            <p class="habitat-tagline">Lunar Habitat Digital Twin &amp; Systems Engineering Platform</p>
+            <p class="habitat-mission">
+                פלטפורמת Digital Twin ליחידת מגורים ירחית לצוות של 4 אנשים —
+                מחברת מודל BIM, הנדסת מערכות (MBSE), מסד נתונים חי, צופה תלת־ממד,
+                ועוזר AI שמבין את ההביטט בלי להמציא עובדות.
+            </p>
+            <div class="tech-tags habitat-stack">
+                <span>Revit / IFC</span>
+                <span>Python</span>
+                <span>FastAPI</span>
+                <span>PostgreSQL</span>
+                <span>React</span>
+                <span>Three.js</span>
+                <span>RAG AI</span>
+            </div>
+        </header>
+
+        <section class="habitat-section">
+            <h2 class="section-title">&lt; SYSTEM_ARCHITECTURE /&gt;</h2>
+            <div class="tech-grid">
+
+                <div class="tech-card">
+                    <div class="card-header"><span class="status-dot"></span> BIM_LAYER.py</div>
+                    <div class="card-content">
+                        <h3>BIM &amp; Parameters</h3>
+                        <p class="description">
+                            הזרקת פרמטרים משותפים מסוג <code>LT_*</code> לקטגוריות Revit
+                            (ציוד מכני, אינסטלציה, חשמל, Generic Models) — זהות נכס, מערכת,
+                            קריטיות, צריכת חשמל, מסה, תחזוקה ומצבי כשל.
+                        </p>
+                        <div class="tech-tags">
+                            <span>pyRevit</span>
+                            <span>Revit API</span>
+                            <span>IFC 4</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-card">
+                    <div class="card-header"><span class="status-dot"></span> SCHEMA.sql</div>
+                    <div class="card-content">
+                        <h3>Relational Twin DB</h3>
+                        <p class="description">
+                            PostgreSQL עם ישויות Spaces, Systems, Assets ו־Requirements —
+                            קישור ישיר בין דרישות מערכת (<code>REQ-*</code>), רכיבים,
+                            ואלמנטי BIM דרך <code>revit_guid</code> / <code>ifc_guid</code>.
+                        </p>
+                        <div class="tech-tags">
+                            <span>SQLAlchemy</span>
+                            <span>PostgreSQL</span>
+                            <span>MBSE</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-card">
+                    <div class="card-header"><span class="status-dot"></span> IFC_PARSER.py</div>
+                    <div class="card-content">
+                        <h3>IFC Seed Engine</h3>
+                        <p class="description">
+                            מנוע ייבוא מ־IFC: קורא Spaces ו־Distribution Elements,
+                            שולף מאפייני <code>LT_*</code>, ויוצר/מעדכן מערכות ונכסים במסד הנתונים.
+                        </p>
+                        <div class="tech-tags">
+                            <span>ifcopenshell</span>
+                            <span>Python</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-card">
+                    <div class="card-header"><span class="status-dot"></span> API_V1.py</div>
+                    <div class="card-content">
+                        <h3>FastAPI Twin Engine</h3>
+                        <p class="description">
+                            REST API לנכסים, סינון לפי מערכת/חלל, וסימולציית כשל
+                            (<code>simulate-failure</code>) שמעדכנת סטטוס ומחזירה השפעה על רכיבים תלויים.
+                        </p>
+                        <div class="tech-tags">
+                            <span>FastAPI</span>
+                            <span>Docker</span>
+                            <span>CORS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-card">
+                    <div class="card-header"><span class="status-dot"></span> LUNA_AI.py</div>
+                    <div class="card-content">
+                        <h3>Ask the Habitat</h3>
+                        <p class="description">
+                            עוזר RAG מבוסס הקשר: בונה קונטקסט ממלאי מערכות, נכסים קריטיים
+                            ומטריצת דרישות — עונה רק לפי נתוני ההביטט, בלי הזיות.
+                        </p>
+                        <div class="tech-tags">
+                            <span>RAG</span>
+                            <span>LLM</span>
+                            <span>SQL Context</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tech-card">
+                    <div class="card-header"><span class="status-dot"></span> VIEWER.tsx</div>
+                    <div class="card-content">
+                        <h3>3D Habitat Viewer</h3>
+                        <p class="description">
+                            צופה תלת־ממד אינטראקטיבי (React Three Fiber): נכסים במרחב,
+                            צבעי סטטוס חיים, בחירה, והדגשת כשלים בזמן אמת.
+                        </p>
+                        <div class="tech-tags">
+                            <span>React</span>
+                            <span>Three.js</span>
+                            <span>TypeScript</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="habitat-section">
+            <h2 class="section-title">&lt; MISSION_CONTROL_DEMO /&gt;</h2>
+            <p class="hub-subtitle habitat-demo-note">דמו אינטראקטיבי בסגנון לוח הבקרה של LUNA-TWIN</p>
+
+            <div class="mission-board">
+                <div class="mission-stats">
+                    <div class="mission-stat">
+                        <span class="stat-label">O2</span>
+                        <span class="stat-value" id="stat-o2">98.4%</span>
+                    </div>
+                    <div class="mission-stat">
+                        <span class="stat-label">POWER</span>
+                        <span class="stat-value" id="stat-power">97.1%</span>
+                    </div>
+                    <div class="mission-stat">
+                        <span class="stat-label">WATER</span>
+                        <span class="stat-value" id="stat-water">92.0%</span>
+                    </div>
+                    <div class="mission-stat">
+                        <span class="stat-label">HEALTH</span>
+                        <span class="stat-value" id="stat-health">94</span>
+                    </div>
+                </div>
+
+                <div class="mission-grid">
+                    <div class="mission-panel">
+                        <div class="card-header">
+                            <span class="status-dot"></span> HABITAT_ASSETS
+                        </div>
+                        <ul class="asset-list" id="asset-list"></ul>
+                        <button type="button" class="retro-tv-btn mission-fail-btn" id="simulate-fail-btn">
+                            SIMULATE FAILURE
+                        </button>
+                    </div>
+
+                    <div class="mission-panel mission-chat">
+                        <div class="card-header">
+                            <span class="status-dot"></span> ASK_THE_HABITAT
+                        </div>
+                        <div class="chat-log" id="chat-log"></div>
+                        <form class="chat-form" id="chat-form">
+                            <input
+                                type="text"
+                                id="chat-input"
+                                placeholder="לדוגמה: מה קורה אם משאבת ECLSS נכשלת?"
+                                autocomplete="off"
+                            />
+                            <button type="submit" class="retro-tv-btn">SEND</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="habitat-section habitat-trace">
+            <h2 class="section-title">&lt; TRACEABILITY /&gt;</h2>
+            <p class="description habitat-trace-text">
+                REQ → System → Asset → BIM Element —
+                שרשרת מעקב מלאה מדרישת מערכת עד אלמנט ב־Revit/IFC.
+                זה הלב של LUNA-TWIN: לא רק ויזואליזציה, אלא תשתית הנדסת מערכות חיה.
+            </p>
+        </section>
+
+    </div>
+
+    <script src="static/js/habitat.js"></script>
+    <script>
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                if (this.hostname === window.location.hostname) {
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+                    const effect = document.getElementById('channel-switch-effect');
+                    effect.style.opacity = '1';
+                    setTimeout(() => { window.location.href = href; }, 300);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

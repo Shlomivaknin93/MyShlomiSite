@@ -486,7 +486,371 @@ h1 {
 }
 
 /* =========================================
-   9. RESPONSIVE
+   9. PROJECTS HUB + HABITAT (LUNA-TWIN)
+   ========================================= */
+.projects-hub {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px 60px;
+    text-align: center;
+    pointer-events: none;
+}
+
+.projects-hub a {
+    pointer-events: auto;
+}
+
+.hub-subtitle {
+    font-family: 'Courier New', monospace;
+    color: #aaa;
+    margin: -30px 0 40px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.hub-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    max-width: 960px;
+    width: 100%;
+}
+
+.hub-btn {
+    flex: 1 1 280px;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 28px 24px;
+    border: 2px solid white;
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    text-decoration: none;
+    text-align: left;
+    box-shadow: 8px 8px 0 rgba(255, 255, 255, 0.2);
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.hub-btn:hover {
+    transform: translate(-4px, -4px);
+    box-shadow: 12px 12px 0 rgba(255, 255, 255, 0.4);
+    background: #111;
+}
+
+.hub-ch {
+    font-family: 'Courier New', monospace;
+    color: #00ff00;
+    text-shadow: 0 0 6px rgba(0, 255, 0, 0.7);
+    letter-spacing: 0.12em;
+    font-size: 0.95rem;
+}
+
+.hub-label {
+    font-family: var(--font-main);
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    font-weight: bold;
+    text-transform: uppercase;
+    color: var(--color-accent);
+}
+
+.hub-desc {
+    font-family: 'Courier New', monospace;
+    font-size: 0.8rem;
+    color: #bbb;
+    letter-spacing: 0.06em;
+}
+
+.habitat-page .habitat-wrap {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 90px 20px 80px;
+}
+
+.habitat-hero {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 30px 20px;
+    border: 2px solid white;
+    background: rgba(0, 0, 0, 0.75);
+    box-shadow: 8px 8px 0 rgba(255, 255, 255, 0.15);
+}
+
+.habitat-signal {
+    font-family: 'Courier New', monospace;
+    color: #00ff00;
+    font-size: 0.85rem;
+    letter-spacing: 0.14em;
+    margin-bottom: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.habitat-brand {
+    font-family: var(--font-main);
+    font-size: clamp(2rem, 8vw, 4rem);
+    color: white;
+    margin: 0 0 10px;
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 18px rgba(255, 255, 255, 0.35);
+}
+
+.habitat-tagline {
+    font-family: 'Courier New', monospace;
+    color: var(--color-accent);
+    font-size: clamp(0.85rem, 2vw, 1.1rem);
+    margin: 0 0 20px;
+}
+
+.habitat-mission {
+    font-family: Arial, sans-serif;
+    color: #ccc;
+    line-height: 1.7;
+    max-width: 720px;
+    margin: 0 auto 24px;
+    font-size: 1rem;
+}
+
+.habitat-stack {
+    justify-content: center;
+}
+
+.habitat-section {
+    margin-bottom: 70px;
+}
+
+.habitat-section .tech-card .card-content {
+    padding-top: 20px;
+}
+
+.habitat-section code {
+    font-family: 'Courier New', monospace;
+    color: var(--color-accent);
+    font-size: 0.9em;
+}
+
+.habitat-demo-note {
+    text-align: center;
+    margin-top: -30px;
+}
+
+.mission-board {
+    border: 2px solid white;
+    background: rgba(0, 0, 0, 0.82);
+    box-shadow: 8px 8px 0 rgba(255, 255, 255, 0.15);
+    padding: 20px;
+}
+
+.mission-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.mission-stat {
+    border: 1px solid #444;
+    padding: 12px;
+    text-align: center;
+    background: #0a0a0a;
+}
+
+.stat-label {
+    display: block;
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    color: #888;
+    letter-spacing: 0.12em;
+    margin-bottom: 6px;
+}
+
+.stat-value {
+    font-family: 'Courier New', monospace;
+    font-size: 1.25rem;
+    color: #00ff00;
+    text-shadow: 0 0 6px rgba(0, 255, 0, 0.5);
+}
+
+.stat-value.stat-danger {
+    color: #ff4444;
+    text-shadow: 0 0 6px rgba(255, 0, 0, 0.6);
+}
+
+.mission-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.mission-panel {
+    border: 1px solid white;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    min-height: 360px;
+}
+
+.asset-list {
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.asset-item {
+    border: 1px solid #333;
+    padding: 10px 12px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    text-align: left;
+    direction: ltr;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.asset-item:hover,
+.asset-item.selected {
+    border-color: white;
+    background: #151515;
+}
+
+.asset-item.warning {
+    border-color: #f59e0b;
+}
+
+.asset-item.failed {
+    border-color: #ef4444;
+    background: #1a0505;
+}
+
+.asset-id {
+    font-family: 'Courier New', monospace;
+    font-size: 0.75rem;
+    color: var(--color-accent);
+}
+
+.asset-name {
+    color: white;
+    font-size: 0.95rem;
+    margin: 4px 0;
+}
+
+.asset-meta {
+    font-family: 'Courier New', monospace;
+    font-size: 0.7rem;
+    color: #888;
+}
+
+.mission-fail-btn {
+    width: calc(100% - 20px);
+    margin: 0 10px 10px;
+    height: 42px;
+    color: #ffaaaa !important;
+    border: 1px solid #662222;
+}
+
+.mission-chat .chat-log {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+    background: #050505;
+    direction: ltr;
+    text-align: left;
+}
+
+.chat-bubble {
+    margin-bottom: 10px;
+    padding: 10px 12px;
+    border: 1px solid #333;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: #ddd;
+}
+
+.chat-bubble p {
+    margin: 4px 0 0;
+    font-family: Arial, sans-serif;
+}
+
+.chat-role {
+    font-family: 'Courier New', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
+}
+
+.chat-user {
+    border-color: #3b82f6;
+    background: rgba(59, 130, 246, 0.12);
+    margin-left: 24px;
+}
+
+.chat-ai {
+    border-color: #444;
+    background: #111;
+    margin-right: 24px;
+}
+
+.chat-form {
+    display: flex;
+    gap: 8px;
+    padding: 10px;
+    border-top: 1px solid #333;
+}
+
+.chat-form input {
+    flex: 1;
+    background: #0a0a0a;
+    border: 1px solid #444;
+    color: white;
+    padding: 10px 12px;
+    font-family: Arial, sans-serif;
+    font-size: 0.85rem;
+    direction: rtl;
+}
+
+.chat-form input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+}
+
+.chat-form .retro-tv-btn {
+    width: auto;
+    min-width: 70px;
+    padding: 0 14px;
+    height: 40px;
+}
+
+.habitat-trace-text {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    direction: rtl;
+}
+
+@media (max-width: 768px) {
+    .mission-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .mission-grid {
+        grid-template-columns: 1fr;
+    }
+    .hub-btn {
+        text-align: center;
+        align-items: center;
+    }
+}
+
+/* =========================================
+   10. RESPONSIVE
    ========================================= */
 @media (max-width: 1024px) {
     .centered-container {

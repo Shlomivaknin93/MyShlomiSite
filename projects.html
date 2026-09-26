@@ -14,79 +14,39 @@
         <a href="index.html" class="button">HOME</a>
     </div>
 
-    <img id="background-gif" src="static/images/static.gif" alt="GIF רקע" style="display: block;" />
+    <img id="background-gif" src="static/images/static.gif" alt="Static Noise" style="display: block;" />
 
-    <div class="projects-container">
-        
-        <h2 class="section-title">&lt; DEVELOPED_SOLUTIONS /&gt;</h2>
+    <div class="projects-hub">
+        <h2 class="section-title">&lt; SELECT_PROJECT_CHANNEL /&gt;</h2>
+        <p class="hub-subtitle">Choose a frequency</p>
 
-        <div class="tech-grid">
-            
-            <div class="tech-card">
-                <div class="card-header">
-                    <span class="status-dot"></span> SHLOMI_BOT.py
-                </div>
-                <div class="card-visual">
-                    <video class="project-gif" autoplay loop muted playsinline>
-                        <source src="static/videos/shlomi_bot.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="card-content">
-                    <h3>Office Knowledge Bot</h3>
-                    <p class="description">
-                        פיתוח בוט משרדי מבוסס AI ולמידת מכונה המספק מענה מיידי לשאלות רוויט על פי הסטנדרט המשרדי, שולף תקנים רלוונטיים ומאתר מסמכים בזמן אמת מתוך השרת המשרדי.
-                    </p>
-                    <div class="tech-tags">
-                        <span>Python</span>
-                        <span>OpenAI API</span>
-                        <span>Revit API</span>
-                    </div>
-                </div>
-            </div>
+        <div class="hub-nav">
+            <a href="habitat.html" class="hub-btn hub-btn-habitat">
+                <span class="hub-ch">CH HAB</span>
+                <span class="hub-label">Private Project — HABITAT</span>
+                <span class="hub-desc">LUNA-TWIN · Lunar Digital Twin</span>
+            </a>
 
-            <div class="tech-card">
-                <div class="card-header">
-                    <span class="status-dot"></span> AUTO_MODELING.cs
-                </div>
-                <div class="card-visual">
-                    <img src="static/images/pixelated_image.jpeg" alt="Automation Demo" class="project-gif">
-                </div>
-                <div class="card-content">
-                    <h3>Revit Automation Add-ins</h3>
-                    <p class="description">
-                        סדרת תוספים (Add-ins) לאוטומציה של משימות חזרתיות,כגון היתרי שינויים, אוטומיה לניהול דאטה על רשימות, מספורי חניות אוטומטים וכו'.
-                    </p>
-                    <div class="tech-tags">
-                        <span>C#</span>
-                        <span>.NET</span>
-                        <span>WPF</span>
-                    </div>
-                </div>
-            </div>
-
-             <div class="tech-card">
-                <div class="card-header">
-                    <span class="status-dot"></span> DATA_ANALYSIS.dyn
-                </div>
-                <div class="card-visual">
-                    <img src="static/images/pixelated_image.jpeg" alt="Dynamo Script" class="project-gif">
-                </div>
-                <div class="card-content">
-                    <h3>Complex Data Check</h3>
-                    <p class="description">
-                        פיתוח אפליקצייה לבקרת מודלי יועצים בתחום ניהול בימ פרויקטלי, הכולל בקרה על סטנדרטים ושיקוף לווב.
-                    </p>
-                    <div class="tech-tags">
-                        <span>Python</span>
-                        <span>Data Shapes</span>
-                    </div>
-                </div>
-            </div>
-
+            <a href="office-projects.html" class="hub-btn hub-btn-office">
+                <span class="hub-ch">CH OFF</span>
+                <span class="hub-label">OFFICE PROJECT</span>
+                <span class="hub-desc">BIM · Automation · Office AI</span>
+            </a>
         </div>
     </div>
 
-    <script src="static/js/script.js"></script>
+    <script>
+        document.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function (e) {
+                if (this.hostname === window.location.hostname) {
+                    e.preventDefault();
+                    const href = this.getAttribute('href');
+                    const effect = document.getElementById('channel-switch-effect');
+                    effect.style.opacity = '1';
+                    setTimeout(() => { window.location.href = href; }, 300);
+                }
+            });
+        });
+    </script>
 </body>
 </html>
