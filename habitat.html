@@ -1,18 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LUNA-TWIN</title>
+    <title>HABITAT · Under Construction</title>
     <link rel="stylesheet" href="static/css/style.css">
-    <script type="importmap">
-    {
-        "imports": {
-            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
-            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
-        }
-    }
-    </script>
 </head>
 <body class="habitat-page">
 
@@ -24,87 +16,20 @@
 
     <img id="background-gif" src="static/images/static.gif" alt="" style="display: block;" />
 
-    <div class="luna-app">
-
-        <header class="luna-topbar">
-            <div class="luna-brand-block">
-                <h1 class="luna-logo">LUNA-TWIN</h1>
-                <span class="luna-sub">Hab-Module-Alpha · Twin Link Active</span>
-            </div>
-            <div class="luna-top-meta">
-                <div class="luna-live">
-                    <span class="status-dot"></span>
-                    <span id="hab-status-label">Hab Status: Nominal</span>
-                </div>
-                <div class="luna-crew">Crew: <strong>4 / 4</strong></div>
-            </div>
-        </header>
-
-        <div class="mission-stats">
-            <div class="mission-stat">
-                <span class="stat-label">OXYGEN (O2)</span>
-                <span class="stat-value" id="stat-o2">98.4%</span>
-            </div>
-            <div class="mission-stat">
-                <span class="stat-label">POWER RESERVE</span>
-                <span class="stat-value" id="stat-power">97.1%</span>
-            </div>
-            <div class="mission-stat">
-                <span class="stat-label">WATER RECYCLE</span>
-                <span class="stat-value" id="stat-water">92.0%</span>
-            </div>
-            <div class="mission-stat">
-                <span class="stat-label">SYSTEM HEALTH</span>
-                <span class="stat-value" id="stat-health">94</span>
-            </div>
+    <div class="habitat-building">
+        <div class="habitat-signal">
+            <span class="status-dot"></span>
+            CH HAB
         </div>
-
-        <div class="luna-main">
-
-            <section class="luna-panel luna-spatial">
-                <div class="card-header">
-                    <span class="status-dot"></span> 3D_HABITAT_MODEL
-                    <span class="header-hint" id="habitat-3d-hint"></span>
-                </div>
-                <div id="habitat-3d" class="habitat-3d"></div>
-            </section>
-
-            <aside class="luna-side">
-                <section class="luna-panel luna-detail">
-                    <div class="card-header">
-                        <span class="status-dot"></span> ZONE_INFO
-                    </div>
-                    <div class="detail-body" id="zone-detail">
-                        <p class="detail-placeholder">Click a marker on the habitat to inspect a zone.</p>
-                    </div>
-                    <button type="button" class="retro-tv-btn mission-fail-btn" id="simulate-fail-btn">
-                        SIMULATE ZONE FAILURE
-                    </button>
-                </section>
-
-                <section class="luna-panel mission-chat">
-                    <div class="card-header">
-                        <span class="status-dot"></span> ASK_THE_HABITAT
-                    </div>
-                    <div class="chat-log" id="chat-log"></div>
-                    <form class="chat-form" id="chat-form">
-                        <input
-                            type="text"
-                            id="chat-input"
-                            placeholder="Which systems fail if ECLSS pump stops?"
-                            autocomplete="off"
-                        />
-                        <button type="submit" class="retro-tv-btn">SEND</button>
-                    </form>
-                </section>
-            </aside>
-
-        </div>
-
+        <h1 class="luna-logo">HABITAT</h1>
+        <p class="habitat-building-text">
+            בבנייה
+            <span class="thinking-dots" aria-hidden="true">
+                <span></span><span></span><span></span>
+            </span>
+        </p>
     </div>
 
-    <script src="static/js/habitat.js"></script>
-    <script type="module" src="static/js/habitat-3d.js"></script>
     <script>
         document.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', function (e) {
